@@ -32,7 +32,7 @@ function main(workbook: ExcelScript.Workbook, week: WeekData) {
   const weekRange = week_table.getRange()
 
   const startIndex = weekRange.getRowIndex() + ROW_OFFSET_FROM_SHEET_TOP
-  const resStartAddress = `A${startIndex}:A${resCount+startIndex+1}`
+  const resStartAddress = `B${startIndex}:B${resCount+startIndex+1}`
   
   console.log(
     `start row #: ${startIndex} - address ${resStartAddress}`)
