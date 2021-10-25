@@ -12,7 +12,7 @@ interface OSTS {
 }
 
 const osts_source = 'FillWeek.osts'
-const osts_body = path.join('dist', 'FillWeek_0.2.0.ts' )
+const osts_body = path.join('src', 'FillWeek_0.2.0.ts' )
 
 const osts_dest = osts_source
 
