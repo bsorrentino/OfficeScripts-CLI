@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,11 @@
     "@types/office-js": "^1.0.213",
     "typescript": "^4.4.4"
   },
-  "engines" : { 
-    "node" : ">=14.0.0" 
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "zx": "^4.2.0",
+    "preferences": "^2.0.2"
   }
-  
 }
