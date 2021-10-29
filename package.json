@@ -1,0 +1,21 @@
+{
+  "name": "officescript.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.11.5",
+    "@types/office-js": "^1.0.213",
+    "typescript": "^4.4.4"
+  },
+  "engines" : { 
+    "node" : ">=14.0.0" 
+  }
+  
+}
