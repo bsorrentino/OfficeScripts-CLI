@@ -5,25 +5,7 @@ import {$, question } from 'zx'
 import Preferences from 'preferences'
 import { exit } from 'process'
 
-interface OSTS {
-    "version": string,
-    "body": string
-    "description": string,
-    "parameterInfo": string
-    "apiInfo": string
-
-}
-
-interface PreferenceData {
-    weburl:string,
-    folder:string
-}
-
-interface SPOFile {
-    Name: string,
-    ServerRelativeUrl: string,
-    UniqueId:string
-}
+import { chooseFile, loadOSTS, PreferenceData, SPOFile } from './osts-utils'
 
 const fsreadFile = promisify(fs.readFile)
 const fswriteFile = promisify(fs.writeFile)
@@ -71,43 +53,13 @@ const askForFolder = async (prefs:Partial<PreferenceData>) => {
    
 }
 
-
-const chooseFile = async (files:Array<SPOFile>) => {
-
-    const choice = async () => ( files.length === 1 ) ?
-        await question( `choose file, default 1: `) :
-        await question( `choose file [1-${files.length}], default 1: ` )
-    
-    try {
-
-        const answer = (await choice()).trim() 
-
-        if( answer.length === 0 ) {
-            return 1
-        }
-
-        const index = Number(answer)
-
-        if( index >=1 && index < files.length ) {
-            return index
-        }
-
-        console.error( `invalid range`)
-    }
-    catch( e ) {
-        console.error( `invalid number`)
-    }
-   
-}
-
 async function extractBody(file:SPOFile) {
 
-    const content = await fsreadFile( file.Name )
+    const osts = await loadOSTS( file.Name )
 
-    const osts = JSON.parse( content.toString() ) as OSTS
-    const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
+    //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
     
-    await fswriteFile( srcFilePath, osts.body )
+    await fswriteFile( osts.bodyFilePath, osts.body )
 }
 
 async function main() {
@@ -135,17 +87,12 @@ async function main() {
             exit(-1)
         }
 
-        spoFileListResult.forEach( (file:SPOFile, index:number ) => 
-            console.log( `${index+1}) - ${file.Name}`))    
-
-        const index = await chooseFile(spoFileListResult)
-        if( !index ) {
+        const selectedFile = await chooseFile(spoFileListResult, (file) => file.Name )
+        if( !selectedFile ) {
             exit(-1)
         }
 
         // $.verbose = true
-
-        const selectedFile = spoFileListResult[index-1]
 
         await $`m365 spo file get --webUrl ${candidateWebUrl} --id ${selectedFile.UniqueId} --asFile --path ${selectedFile.Name}`
 
