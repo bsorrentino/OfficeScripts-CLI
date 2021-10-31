@@ -1,10 +1,12 @@
 {
-  "name": "officescript.ts",
+  "name": "@bsorrentino/osts-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI for manage OSTS files",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "pack": "node dist/osts-pack.js",
+    "unpack": "node dist/osts-unpack.js"
   },
   "keywords": [],
   "author": "",

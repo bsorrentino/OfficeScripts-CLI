@@ -2,6 +2,7 @@ import { question } from "zx"
 import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
+import Preferences from "preferences"
 
 export interface OSTS {
     "version": string
@@ -23,6 +24,70 @@ export interface SPOFile {
     Name: string,
     ServerRelativeUrl: string,
     UniqueId:string
+}
+
+const askForWebUrl = async (prefs:Partial<PreferenceData>) => {
+    const ask = async () => ( prefs.weburl ) ?
+        await question( `Web Url, default '${prefs.weburl}' type url or <enter> to confirm: `) :
+        await question( `Web Url, type an valid url: `)
+    
+    // console.log( 'answer', answer )
+    
+    const isValid = ( url:string ) => url.trim().length > 0
+
+    const answer = (await ask()).trim()
+    if( answer.length === 0 && prefs.folder ) {
+        return prefs.weburl
+    }
+    if( isValid(answer) ) {
+        return answer
+    }
+   
+    console.error(`provided answer '${answer}' is not valid!`)
+   
+}
+
+const askForFolder = async (prefs:Partial<PreferenceData>) => {
+    const ask = async () => ( prefs.folder ) ?
+        await question( `Folder, default '${prefs.folder}' type url or <enter> to confirm: `) :
+        await question( `Folder, type an valid folder path: `)
+    
+    // console.log( 'answer', answer )
+
+    const isValid = ( url:string ) => url.trim().length > 0
+
+    const answer = (await ask()).trim()
+    if( answer.length === 0 && prefs.folder ) {
+        return prefs.folder
+    }
+    if( isValid(answer) ) {
+        return answer
+    }
+   
+    console.error(`provided answer '${answer}' is not valid!`)
+   
+}
+
+const _prefs = new Preferences('org.bsc.officescripts-cli',{}, {
+    encrypt: false
+}) as Partial<PreferenceData>
+
+export const askForPreferences = async ():Promise<PreferenceData|undefined> => {
+
+    const candidateWebUrl = await askForWebUrl( _prefs )
+    if( !candidateWebUrl ) return
+    const candidateFolder = await askForFolder( _prefs )
+    if( !candidateFolder ) return
+
+    return { weburl:candidateWebUrl, folder:candidateFolder }
+
+}
+
+export const savePreferences = ( data:PreferenceData) => {
+
+    _prefs.weburl = data.weburl
+    _prefs.folder = data.folder
+
 }
 
 export const chooseFile = async <T>(files:Array<T>, print:(file:T) => string ) => {

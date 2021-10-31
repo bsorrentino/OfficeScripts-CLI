@@ -5,85 +5,37 @@ import {$, question } from 'zx'
 import Preferences from 'preferences'
 import { exit } from 'process'
 
-import { chooseFile, loadOSTS, PreferenceData, SPOFile } from './osts-utils'
+import { chooseFile, loadOSTS, askForPreferences, PreferenceData, savePreferences, SPOFile } from './osts-utils'
 
-const fsreadFile = promisify(fs.readFile)
 const fswriteFile = promisify(fs.writeFile)
+const fsmkdir = promisify(fs.mkdir)
 
-
-const askForWebUrl = async (prefs:Partial<PreferenceData>) => {
-    const ask = async () => ( prefs.weburl ) ?
-        await question( `Web Url, default '${prefs.weburl}' type url or <enter> to confirm: `) :
-        await question( `Web Url, type an valid url: `)
-    
-    // console.log( 'answer', answer )
-    
-    const isValid = ( url:string ) => url.trim().length > 0
-
-    const answer = (await ask()).trim()
-    if( answer.length === 0 && prefs.folder ) {
-        return prefs.weburl
-    }
-    if( isValid(answer) ) {
-        return answer
-    }
-   
-    console.error(`provided answer '${answer}' is not valid!`)
-   
-}
-
-const askForFolder = async (prefs:Partial<PreferenceData>) => {
-    const ask = async () => ( prefs.folder ) ?
-        await question( `Folder, default '${prefs.folder}' type url or <enter> to confirm: `) :
-        await question( `Folder, type an valid folder path: `)
-    
-    // console.log( 'answer', answer )
-
-    const isValid = ( url:string ) => url.trim().length > 0
-
-    const answer = (await ask()).trim()
-    if( answer.length === 0 && prefs.folder ) {
-        return prefs.folder
-    }
-    if( isValid(answer) ) {
-        return answer
-    }
-   
-    console.error(`provided answer '${answer}' is not valid!`)
-   
-}
 
 async function extractBody(file:SPOFile) {
 
     const osts = await loadOSTS( file.Name )
 
     //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
-    
+    await fsmkdir( path.dirname(osts.bodyFilePath) )
     await fswriteFile( osts.bodyFilePath, osts.body )
 }
 
-async function main() {
+async function unpack() {
 
-    const prefs = new Preferences('org.bsc.officescripts-cli',{}, {
-        encrypt: false
-    }) as Partial<PreferenceData>;
-      
-    const candidateWebUrl = await askForWebUrl( prefs )
-    if( !candidateWebUrl ) return
-    const candidateFolder = await askForFolder( prefs )
-    if( !candidateFolder ) return
+    const prefs = await askForPreferences()   
+    if( !prefs ) return
 
     try {
 
         $.verbose = false
         
         const JMESPathQuery = `[?ends_with(Name, '.osts')]`
-        const result = await $`m365 spo file list --webUrl ${candidateWebUrl} --folder ${candidateFolder} --recursive --query ${JMESPathQuery}`
+        const result = await $`m365 spo file list --webUrl ${prefs.weburl} --folder ${prefs.folder} --recursive --query ${JMESPathQuery}`
 
         const spoFileListResult = JSON.parse( result.stdout ) as Array<SPOFile>
 
         if( !spoFileListResult.length || spoFileListResult.length === 0 ) {
-            console.error( `no OSTS files detected at folder '${candidateFolder}` )
+            console.error( `no OSTS files detected at folder '${prefs.folder}` )
             exit(-1)
         }
 
@@ -94,15 +46,14 @@ async function main() {
 
         // $.verbose = true
 
-        await $`m365 spo file get --webUrl ${candidateWebUrl} --id ${selectedFile.UniqueId} --asFile --path ${selectedFile.Name}`
+        await $`m365 spo file get --webUrl ${prefs.weburl} --id ${selectedFile.UniqueId} --asFile --path ${selectedFile.Name}`
 
         await extractBody( selectedFile )
 
-        prefs.folder = candidateFolder
-        prefs.weburl = candidateWebUrl
+        savePreferences( prefs )
     }
     catch( e ) {
-        console.error( 'error searching file')
+        console.error( 'error searching file', e)
         exit(-1)
     }
 
@@ -110,4 +61,4 @@ async function main() {
 }
 
 
-(async() => main() )()
+(async() => unpack() )()
