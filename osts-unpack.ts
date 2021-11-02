@@ -1,11 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
-import {$, question } from 'zx'
-import Preferences from 'preferences'
+import {$ } from 'zx'
 import { exit } from 'process'
 
-import { chooseFile, loadOSTS, askForPreferences, PreferenceData, savePreferences, SPOFile } from './osts-utils'
+import { chooseFile, loadOSTS, askForPreferences, savePreferences, SPOFile } from './osts-utils'
 
 const fswriteFile = promisify(fs.writeFile)
 const fsmkdir = promisify(fs.mkdir)
