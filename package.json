@@ -2,10 +2,10 @@
   "name": "@bsorrentino/osts-cli",
   "version": "0.1.1",
   "description": "CLI for manage OSTS files",
+  "types": "office-js-simplified.d.ts",
   "bin": {
     "osts": "./index.js"
   },
-  "main": "./index.js",
   "scripts": {
     "build": "tsc",
     "pack": "node index.js pack",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.11.5",
-    "@types/office-js": "^1.0.213",
+    "@types/office-js": "^1.0.217",
     "typescript": "^4.4.4"
   },
   "engines": {
@@ -33,4 +33,3 @@
     "url": "https://github.com/bsorrentino/OfficeScripts-CLI.git"
   }
 }
-    
