@@ -20,7 +20,7 @@ const askForConfirmUpload = async () => {
     return false
 }
 
-async function pack() {
+export async function pack( bodyDirPath:string ) {
 
     const osts_files = (await fsreaddir( '.' ))
         .filter( n => path.extname(n)==='.osts')
@@ -30,7 +30,7 @@ async function pack() {
         return -1
     }
 
-    const osts = await loadOSTS( selectedFile )
+    const osts = await loadOSTS( selectedFile, bodyDirPath )
 
     const body_source = await fsreadFile( osts.bodyFilePath )
 
@@ -51,15 +51,3 @@ async function pack() {
 
 }
 
-
-(async() => { 
-    try {
-        const code = await pack()
-        exit(code)
-     }
-     catch( e ) {
-         console.error( 'error occurred!', e)
-         exit(-1)
-     }
-     
-})()

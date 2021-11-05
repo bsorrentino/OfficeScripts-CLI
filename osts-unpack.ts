@@ -10,16 +10,16 @@ const fswriteFile = promisify(fs.writeFile)
 const fsmkdir = promisify(fs.mkdir)
 
 
-async function extractBody(file:SPOFile) {
+async function extractBody(file:SPOFile, bodyDirPath:string) {
 
-    const osts = await loadOSTS( file.Name )
+    const osts = await loadOSTS( file.Name, bodyDirPath )
 
     //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
     await fsmkdir( path.dirname(osts.bodyFilePath) )
     await fswriteFile( osts.bodyFilePath, osts.body )
 }
 
-async function unpack() {
+export async function unpack( bodyDirPath:string ) {
 
     const prefs = await askForPreferences()   
     if( !prefs ) return
@@ -47,7 +47,7 @@ async function unpack() {
 
         await $`m365 spo file get --webUrl ${prefs.weburl} --id ${selectedFile.UniqueId} --asFile --path ${selectedFile.Name}`
 
-        await extractBody( selectedFile )
+        await extractBody( selectedFile, bodyDirPath )
 
         savePreferences( prefs )
     }
@@ -58,6 +58,3 @@ async function unpack() {
 
     exit(1)
 }
-
-
-(async() => unpack() )()

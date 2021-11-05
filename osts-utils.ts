@@ -123,13 +123,13 @@ export const chooseFile = async <T>(files:Array<T>, print:(file:T) => string ) =
 
 const fsreadFile = promisify(fs.readFile)
 
-export async function loadOSTS( filePath:string ):Promise<LoadedOSTS> {
+export async function loadOSTS( filePath:string, bodyDirPath:string ):Promise<LoadedOSTS> {
 
     const content = await fsreadFile( filePath )
 
     const osts = JSON.parse( content.toString() ) as OSTS
 
-    const bodyFilePath = path.join('src', `${path.basename(filePath, '.osts')}_${osts.version}.ts`)
+    const bodyFilePath = path.join(bodyDirPath, `${path.basename(filePath, '.osts')}_${osts.version}.ts`)
     
     return { bodyFilePath: bodyFilePath, ...osts}
 
