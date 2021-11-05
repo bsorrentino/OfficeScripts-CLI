@@ -122,7 +122,7 @@ function pack(bodyDirPath) {
                 case 8:
                     _a.sent();
                     (0, osts_utils_1.savePreferences)(prefs);
-                    return [2 /*return*/];
+                    return [2 /*return*/, 0];
             }
         });
     });

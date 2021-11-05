@@ -49,5 +49,7 @@ export async function pack( bodyDirPath:string ) {
 
     savePreferences( prefs )
 
+    return 0
+
 }
 

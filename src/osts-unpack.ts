@@ -22,7 +22,7 @@ async function extractBody(file:SPOFile, bodyDirPath:string) {
 export async function unpack( bodyDirPath:string ) {
 
     const prefs = await askForPreferences()   
-    if( !prefs ) return
+    if( !prefs ) return 0
 
     try {
 
@@ -35,12 +35,12 @@ export async function unpack( bodyDirPath:string ) {
 
         if( !spoFileListResult.length || spoFileListResult.length === 0 ) {
             console.error( `no OSTS files detected at folder '${prefs.folder}` )
-            exit(-1)
+            return -1
         }
 
         const selectedFile = await chooseFile(spoFileListResult, (file) => file.Name )
         if( !selectedFile ) {
-            exit(-1)
+            return -1
         }
 
         // $.verbose = true
@@ -53,8 +53,8 @@ export async function unpack( bodyDirPath:string ) {
     }
     catch( e ) {
         console.error( 'error searching file', e)
-        exit(-1)
+        return -1
     }
 
-    exit(1)
+    return 0
 }

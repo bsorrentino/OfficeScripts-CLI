@@ -43,7 +43,9 @@ var minimist_1 = __importDefault(require("minimist"));
 var process_1 = require("process");
 var osts_pack_1 = require("./osts-pack");
 var osts_unpack_1 = require("./osts-unpack");
+var DEFAULT_PATH = 'osts';
 function help() {
+    console.log("\nUsage:\n========\n\nosts unpack [--path, -p <dest dir>] // download OSTS package and extract body (.ts) to dest dir (default '" + DEFAULT_PATH + "')\n\nosts pack [--path, -p <src dir>] // package source (.ts) in src dir (default '" + DEFAULT_PATH + "') to OSTS package and upload it\n");
 }
 // Evaluate command
 (function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -55,14 +57,13 @@ function help() {
                     '--': false,
                     string: 'path',
                     alias: { 'p': 'path' },
-                    'default': { 'path': 'src' },
+                    'default': { 'path': DEFAULT_PATH },
                     unknown: function (args) { return args.toLowerCase() === 'pack' || args.toLowerCase() === 'unpack'; }
                 });
-                console.log(cli);
                 _cmd = function () {
                     return (cli._.length > 0) ? cli._[0].toLowerCase() : undefined;
                 };
-                _path = function () { var _a; return ((_a = cli['path']) === null || _a === void 0 ? void 0 : _a.length) === 0 ? 'src' : cli.path; };
+                _path = function () { var _a; return ((_a = cli['path']) === null || _a === void 0 ? void 0 : _a.length) === 0 ? DEFAULT_PATH : cli.path; };
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 7, , 8]);
@@ -74,11 +75,10 @@ function help() {
                 return [3 /*break*/, 6];
             case 3:
                 if (!(_cmd() === 'unpack')) return [3 /*break*/, 5];
-                return [4 /*yield*/, (0, osts_unpack_1.unpack)(_path())
-                    //exit(code)
-                ];
+                return [4 /*yield*/, (0, osts_unpack_1.unpack)(_path())];
             case 4:
                 code = _a.sent();
+                (0, process_1.exit)(code);
                 return [3 /*break*/, 6];
             case 5:
                 help();

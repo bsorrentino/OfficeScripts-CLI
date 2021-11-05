@@ -64,7 +64,6 @@ var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 var util_1 = require("util");
 var zx_1 = require("zx");
-var process_1 = require("process");
 var osts_utils_1 = require("./osts-utils");
 var fswriteFile = (0, util_1.promisify)(fs.writeFile);
 var fsmkdir = (0, util_1.promisify)(fs.mkdir);
@@ -100,7 +99,7 @@ function unpack(bodyDirPath) {
                 case 1:
                     prefs = _a.sent();
                     if (!prefs)
-                        return [2 /*return*/];
+                        return [2 /*return*/, 0];
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 7, , 8]);
@@ -112,13 +111,13 @@ function unpack(bodyDirPath) {
                     spoFileListResult = JSON.parse(result.stdout);
                     if (!spoFileListResult.length || spoFileListResult.length === 0) {
                         console.error("no OSTS files detected at folder '" + prefs.folder);
-                        (0, process_1.exit)(-1);
+                        return [2 /*return*/, -1];
                     }
                     return [4 /*yield*/, (0, osts_utils_1.chooseFile)(spoFileListResult, function (file) { return file.Name; })];
                 case 4:
                     selectedFile = _a.sent();
                     if (!selectedFile) {
-                        (0, process_1.exit)(-1);
+                        return [2 /*return*/, -1];
                     }
                     // $.verbose = true
                     return [4 /*yield*/, (0, zx_1.$)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["m365 spo file get --webUrl ", " --id ", " --asFile --path ", ""], ["m365 spo file get --webUrl ", " --id ", " --asFile --path ", ""])), prefs.weburl, selectedFile.UniqueId, selectedFile.Name)];
@@ -133,11 +132,8 @@ function unpack(bodyDirPath) {
                 case 7:
                     e_1 = _a.sent();
                     console.error('error searching file', e_1);
-                    (0, process_1.exit)(-1);
-                    return [3 /*break*/, 8];
-                case 8:
-                    (0, process_1.exit)(1);
-                    return [2 /*return*/];
+                    return [2 /*return*/, -1];
+                case 8: return [2 /*return*/, 0];
             }
         });
     });
