@@ -14,7 +14,7 @@ Usage:
 
 osts unpack [--path, -p <dest dir>] // download OSTS package and extract body (.ts) to dest dir (default '${DEFAULT_PATH}')
 
-osts pack [--path, -p <src dir>] // package source (.ts) in src dir (default '${DEFAULT_PATH}') to OSTS package and upload it
+osts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default '${DEFAULT_PATH}') to OSTS package and upload it
 `)
 }
 
