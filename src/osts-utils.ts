@@ -109,7 +109,7 @@ export const chooseFile = async <T>(files:Array<T>, print:(file:T) => string ) =
 
         const index = Number(answer)
 
-        if( index >=1 && index < files.length ) {
+        if( index >=1 && index <= files.length ) {
             return files[index-1]
         }
 

@@ -218,7 +218,7 @@ var chooseFile = function (files, print) { return __awaiter(void 0, void 0, void
                     return [2 /*return*/, files[0]];
                 }
                 index = Number(answer);
-                if (index >= 1 && index < files.length) {
+                if (index >= 1 && index <= files.length) {
                     return [2 /*return*/, files[index - 1]];
                 }
                 console.error("invalid range");
