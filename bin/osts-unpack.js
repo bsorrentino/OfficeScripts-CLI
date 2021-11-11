@@ -69,7 +69,7 @@ var fswriteFile = (0, util_1.promisify)(fs.writeFile);
 var fsmkdir = (0, util_1.promisify)(fs.mkdir);
 function extractBody(file, bodyDirPath) {
     return __awaiter(this, void 0, void 0, function () {
-        var osts;
+        var osts, dir;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, (0, osts_utils_1.loadOSTS)(file.Name, bodyDirPath)
@@ -77,13 +77,14 @@ function extractBody(file, bodyDirPath) {
                 ];
                 case 1:
                     osts = _a.sent();
-                    //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
-                    return [4 /*yield*/, fsmkdir(path.dirname(osts.bodyFilePath))];
+                    dir = path.dirname(osts.bodyFilePath);
+                    if (!!fs.existsSync(dir)) return [3 /*break*/, 3];
+                    return [4 /*yield*/, fsmkdir(dir)];
                 case 2:
-                    //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
                     _a.sent();
-                    return [4 /*yield*/, fswriteFile(osts.bodyFilePath, osts.body)];
-                case 3:
+                    _a.label = 3;
+                case 3: return [4 /*yield*/, fswriteFile(osts.bodyFilePath, osts.body)];
+                case 4:
                     _a.sent();
                     return [2 /*return*/];
             }

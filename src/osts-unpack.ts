@@ -2,7 +2,6 @@ import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
 import {$ } from 'zx'
-import { exit } from 'process'
 
 import { chooseFile, loadOSTS, askForPreferences, savePreferences, SPOFile } from './osts-utils'
 
@@ -15,7 +14,10 @@ async function extractBody(file:SPOFile, bodyDirPath:string) {
     const osts = await loadOSTS( file.Name, bodyDirPath )
 
     //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
-    await fsmkdir( path.dirname(osts.bodyFilePath) )
+    const dir = path.dirname(osts.bodyFilePath)
+    if( !fs.existsSync(dir) ) {
+        await fsmkdir( dir )
+    } 
     await fswriteFile( osts.bodyFilePath, osts.body )
 }
 

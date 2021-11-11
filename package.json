@@ -1,6 +1,6 @@
 {
   "name": "@bsorrentino/osts-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for manage OSTS files",
   "bin": {
     "osts": "./index.js"
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.11.5",
