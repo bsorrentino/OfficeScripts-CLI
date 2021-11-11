@@ -45,7 +45,7 @@ var osts_pack_1 = require("./osts-pack");
 var osts_unpack_1 = require("./osts-unpack");
 var DEFAULT_PATH = 'osts';
 function help() {
-    console.log("\nUsage:\n========\n\nosts unpack [--path, -p <dest dir>] // download OSTS package and extract body (.ts) to dest dir (default '" + DEFAULT_PATH + "')\n\nosts pack [--path, -p <src dir>] // package source (.ts) in src dir (default '" + DEFAULT_PATH + "') to OSTS package and upload it\n");
+    console.log("\nUsage:\n========\n\nosts unpack [--path, -p <dest dir>] // download OSTS package and extract body (.ts) to dest dir (default '" + DEFAULT_PATH + "')\n\nosts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default '" + DEFAULT_PATH + "') to OSTS package and upload it\n");
 }
 // Evaluate command
 (function () { return __awaiter(void 0, void 0, void 0, function () {
