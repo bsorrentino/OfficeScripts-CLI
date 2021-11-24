@@ -1,3 +1,8 @@
+//
+// Version 1.0
+//
+// Adapting excel-js to simplified version
+//
 declare namespace ExcelScript {
 
 
@@ -16,6 +21,7 @@ declare namespace ExcelScript {
 
         getRowCount():number
         getRange(address?:string):Range
+        setName( name:string ):void
 
     }
 
@@ -23,12 +29,14 @@ declare namespace ExcelScript {
 
         getTable(name: string): Table
         getRange(address?:string):Range
+        getTables(): Array<Table>
 
     }
 
     interface Workbook extends Excel.Workbook {
 
         getWorksheet(name: string): Worksheet
+        getActiveWorksheet(): Worksheet
 
     }
 

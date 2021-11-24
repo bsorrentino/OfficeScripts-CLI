@@ -43,22 +43,24 @@ var minimist_1 = __importDefault(require("minimist"));
 var process_1 = require("process");
 var osts_pack_1 = require("./osts-pack");
 var osts_unpack_1 = require("./osts-unpack");
+var osts_utils_1 = require("./osts-utils");
 var DEFAULT_PATH = 'osts';
 function help() {
-    console.log("\nUsage:\n========\n\nosts unpack [--path, -p <dest dir>] // download OSTS package and extract body (.ts) to dest dir (default '" + DEFAULT_PATH + "')\n\nosts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default '" + DEFAULT_PATH + "') to OSTS package and upload it\n");
+    console.log("\nUsage:\n========\n\nosts unpack [--path, -p <dest dir> [--dts] ] // download OSTS package and extract body (.ts) to dest dir (default '" + DEFAULT_PATH + "'). \n                                             // If --dts is specified an Office Script Simplified TS Declaration  file will be copied in dest dir\n\nosts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default '" + DEFAULT_PATH + "') to OSTS package and upload it\n\nosts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration file is copied in dest dir\n");
 }
 // Evaluate command
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var cli, _cmd, _path, code, code, e_1;
+    var cli, _cmd, _path, code, code, code, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 cli = (0, minimist_1.default)(process.argv.slice(2), {
                     '--': false,
                     string: 'path',
+                    boolean: 'dts',
                     alias: { 'p': 'path' },
                     'default': { 'path': DEFAULT_PATH },
-                    unknown: function (args) { return args.toLowerCase() === 'pack' || args.toLowerCase() === 'unpack'; }
+                    unknown: function (args) { return args.toLowerCase() === 'pack' || args.toLowerCase() === 'unpack' || args.toLowerCase() === 'dts'; }
                 });
                 _cmd = function () {
                     return (cli._.length > 0) ? cli._[0].toLowerCase() : undefined;
@@ -66,31 +68,38 @@ function help() {
                 _path = function () { var _a; return ((_a = cli['path']) === null || _a === void 0 ? void 0 : _a.length) === 0 ? DEFAULT_PATH : cli.path; };
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 7, , 8]);
+                _a.trys.push([1, 9, , 10]);
                 if (!(_cmd() === 'pack')) return [3 /*break*/, 3];
                 return [4 /*yield*/, (0, osts_pack_1.pack)(_path())];
             case 2:
                 code = _a.sent();
                 (0, process_1.exit)(code);
-                return [3 /*break*/, 6];
+                return [3 /*break*/, 8];
             case 3:
                 if (!(_cmd() === 'unpack')) return [3 /*break*/, 5];
-                return [4 /*yield*/, (0, osts_unpack_1.unpack)(_path())];
+                return [4 /*yield*/, (0, osts_unpack_1.unpack)(_path(), cli['dts'])];
             case 4:
                 code = _a.sent();
                 (0, process_1.exit)(code);
-                return [3 /*break*/, 6];
+                return [3 /*break*/, 8];
             case 5:
+                if (!(_cmd() === 'dts')) return [3 /*break*/, 7];
+                return [4 /*yield*/, (0, osts_utils_1.copyOfficeScriptSimplifiedDeclaration)(_path())];
+            case 6:
+                code = _a.sent();
+                (0, process_1.exit)(code);
+                return [3 /*break*/, 8];
+            case 7:
                 help();
                 (0, process_1.exit)(0);
-                _a.label = 6;
-            case 6: return [3 /*break*/, 8];
-            case 7:
+                _a.label = 8;
+            case 8: return [3 /*break*/, 10];
+            case 9:
                 e_1 = _a.sent();
                 console.error('error occurred!', e_1);
                 (0, process_1.exit)(-1);
-                return [3 /*break*/, 8];
-            case 8: return [2 /*return*/];
+                return [3 /*break*/, 10];
+            case 10: return [2 /*return*/];
         }
     });
 }); })();
