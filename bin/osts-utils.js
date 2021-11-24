@@ -69,7 +69,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadOSTS = exports.chooseFile = exports.savePreferences = exports.askForPreferences = void 0;
+exports.copyOfficeScriptSimplifiedDeclaration = exports.loadOSTS = exports.chooseFile = exports.savePreferences = exports.askForPreferences = void 0;
 var zx_1 = require("zx");
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
@@ -243,9 +243,36 @@ function loadOSTS(filePath, bodyDirPath) {
                     content = _a.sent();
                     osts = JSON.parse(content.toString());
                     bodyFilePath = path.join(bodyDirPath, path.basename(filePath, '.osts') + "_" + osts.version + ".ts");
-                    return [2 /*return*/, __assign({ bodyFilePath: bodyFilePath }, osts)];
+                    // console.log( 'loadOSTS.bodyFilePath',  bodyFilePath, osts  )
+                    return [2 /*return*/, __assign(__assign({}, osts), { bodyFilePath: bodyFilePath })];
             }
         });
     });
 }
 exports.loadOSTS = loadOSTS;
+var DECLARATION_FILE = 'office-js-simplified.d.ts';
+var fsCopyFile = (0, util_1.promisify)(fs.copyFile);
+function copyOfficeScriptSimplifiedDeclaration(bodyDirPath) {
+    return __awaiter(this, void 0, void 0, function () {
+        var e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    //console.log( '__dirname', __dirname )
+                    return [4 /*yield*/, fsCopyFile(path.join(__dirname, '..', DECLARATION_FILE), path.join(bodyDirPath, DECLARATION_FILE))];
+                case 1:
+                    //console.log( '__dirname', __dirname )
+                    _a.sent();
+                    console.info("declaration file needs installation of '" + zx_1.chalk.yellow('@types/Office.js') + "' running " + zx_1.chalk.inverse('npm install -D @types/office-js'));
+                    return [2 /*return*/, 0];
+                case 2:
+                    e_2 = _a.sent();
+                    console.error('failed to copy declaration file', e_2);
+                    return [2 /*return*/, -1];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.copyOfficeScriptSimplifiedDeclaration = copyOfficeScriptSimplifiedDeclaration;

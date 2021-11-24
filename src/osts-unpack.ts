@@ -1,27 +1,26 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
-import {$ } from 'zx'
+import { $ } from 'zx'
 
-import { chooseFile, loadOSTS, askForPreferences, savePreferences, SPOFile } from './osts-utils'
+import { chooseFile, loadOSTS, askForPreferences, savePreferences, SPOFile, copyOfficeScriptSimplifiedDeclaration as CP_D_TS } from './osts-utils'
 
-const fswriteFile = promisify(fs.writeFile)
-const fsmkdir = promisify(fs.mkdir)
-
+const fsWriteFile = promisify(fs.writeFile)
+const fsMkdir = promisify(fs.mkdir)
 
 async function extractBody(file:SPOFile, bodyDirPath:string) {
 
     const osts = await loadOSTS( file.Name, bodyDirPath )
-
-    //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
+    //console.log( 'bodyDirPath', bodyDirPath, 'bodyFilePath', osts.bodyFilePath )
+    
     const dir = path.dirname(osts.bodyFilePath)
     if( !fs.existsSync(dir) ) {
-        await fsmkdir( dir )
+        await fsMkdir( dir )
     } 
-    await fswriteFile( osts.bodyFilePath, osts.body )
+    await fsWriteFile( osts.bodyFilePath, osts.body )
 }
 
-export async function unpack( bodyDirPath:string ) {
+export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDeclaration?:boolean ) {
 
     const prefs = await askForPreferences()   
     if( !prefs ) return 0
@@ -50,6 +49,11 @@ export async function unpack( bodyDirPath:string ) {
         await $`m365 spo file get --webUrl ${prefs.weburl} --id ${selectedFile.UniqueId} --asFile --path ${selectedFile.Name}`
 
         await extractBody( selectedFile, bodyDirPath )
+
+        if( copyOfficeScriptSimplifiedDeclaration ) {
+
+            await CP_D_TS( bodyDirPath )
+        }
 
         savePreferences( prefs )
     }

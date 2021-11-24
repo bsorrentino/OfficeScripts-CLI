@@ -1,4 +1,4 @@
-import { question } from "zx"
+import { question,chalk } from "zx"
 import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
@@ -131,7 +131,27 @@ export async function loadOSTS( filePath:string, bodyDirPath:string ):Promise<Lo
 
     const bodyFilePath = path.join(bodyDirPath, `${path.basename(filePath, '.osts')}_${osts.version}.ts`)
     
-    return { bodyFilePath: bodyFilePath, ...osts}
+    // console.log( 'loadOSTS.bodyFilePath',  bodyFilePath, osts  )
+    
+    return { ...osts, bodyFilePath: bodyFilePath}
 
 }
     
+const DECLARATION_FILE = 'office-js-simplified.d.ts'
+
+const fsCopyFile = promisify(fs.copyFile)
+
+export async function copyOfficeScriptSimplifiedDeclaration( bodyDirPath:string ) {
+
+    try {
+         //console.log( '__dirname', __dirname )
+         await fsCopyFile( path.join(__dirname, '..', DECLARATION_FILE), path.join(bodyDirPath,DECLARATION_FILE) )
+         console.info( `declaration file needs installation of '${chalk.yellow('@types/Office.js')}' running ${chalk.inverse('npm install -D @types/office-js')}`)
+
+         return 0
+     }
+     catch( e ) {
+         console.error( 'failed to copy declaration file', e )
+         return -1
+     }
+ }

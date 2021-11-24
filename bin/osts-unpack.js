@@ -65,25 +65,25 @@ var path = __importStar(require("path"));
 var util_1 = require("util");
 var zx_1 = require("zx");
 var osts_utils_1 = require("./osts-utils");
-var fswriteFile = (0, util_1.promisify)(fs.writeFile);
-var fsmkdir = (0, util_1.promisify)(fs.mkdir);
+var fsWriteFile = (0, util_1.promisify)(fs.writeFile);
+var fsMkdir = (0, util_1.promisify)(fs.mkdir);
 function extractBody(file, bodyDirPath) {
     return __awaiter(this, void 0, void 0, function () {
         var osts, dir;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, (0, osts_utils_1.loadOSTS)(file.Name, bodyDirPath)
-                    //const srcFilePath = path.join('src', `${path.basename(file.Name, '.osts')}_${osts.version}.ts`)
+                    //console.log( 'bodyDirPath', bodyDirPath, 'bodyFilePath', osts.bodyFilePath )
                 ];
                 case 1:
                     osts = _a.sent();
                     dir = path.dirname(osts.bodyFilePath);
                     if (!!fs.existsSync(dir)) return [3 /*break*/, 3];
-                    return [4 /*yield*/, fsmkdir(dir)];
+                    return [4 /*yield*/, fsMkdir(dir)];
                 case 2:
                     _a.sent();
                     _a.label = 3;
-                case 3: return [4 /*yield*/, fswriteFile(osts.bodyFilePath, osts.body)];
+                case 3: return [4 /*yield*/, fsWriteFile(osts.bodyFilePath, osts.body)];
                 case 4:
                     _a.sent();
                     return [2 /*return*/];
@@ -91,7 +91,7 @@ function extractBody(file, bodyDirPath) {
         });
     });
 }
-function unpack(bodyDirPath) {
+function unpack(bodyDirPath, copyOfficeScriptSimplifiedDeclaration) {
     return __awaiter(this, void 0, void 0, function () {
         var prefs, JMESPathQuery, result, spoFileListResult, selectedFile, e_1;
         return __generator(this, function (_a) {
@@ -103,7 +103,7 @@ function unpack(bodyDirPath) {
                         return [2 /*return*/, 0];
                     _a.label = 2;
                 case 2:
-                    _a.trys.push([2, 7, , 8]);
+                    _a.trys.push([2, 9, , 10]);
                     zx_1.$.verbose = false;
                     JMESPathQuery = "[?ends_with(Name, '.osts')]";
                     return [4 /*yield*/, (0, zx_1.$)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["m365 spo file list --webUrl ", " --folder ", " --recursive --query ", ""], ["m365 spo file list --webUrl ", " --folder ", " --recursive --query ", ""])), prefs.weburl, prefs.folder, JMESPathQuery)];
@@ -128,13 +128,19 @@ function unpack(bodyDirPath) {
                     return [4 /*yield*/, extractBody(selectedFile, bodyDirPath)];
                 case 6:
                     _a.sent();
-                    (0, osts_utils_1.savePreferences)(prefs);
-                    return [3 /*break*/, 8];
+                    if (!copyOfficeScriptSimplifiedDeclaration) return [3 /*break*/, 8];
+                    return [4 /*yield*/, (0, osts_utils_1.copyOfficeScriptSimplifiedDeclaration)(bodyDirPath)];
                 case 7:
+                    _a.sent();
+                    _a.label = 8;
+                case 8:
+                    (0, osts_utils_1.savePreferences)(prefs);
+                    return [3 /*break*/, 10];
+                case 9:
                     e_1 = _a.sent();
                     console.error('error searching file', e_1);
                     return [2 /*return*/, -1];
-                case 8: return [2 /*return*/, 0];
+                case 10: return [2 /*return*/, 0];
             }
         });
     });
