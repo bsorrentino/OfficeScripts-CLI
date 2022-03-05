@@ -70,7 +70,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.copyOfficeScriptSimplifiedDeclaration = exports.loadOSTS = exports.chooseFile = exports.savePreferences = exports.askForPreferences = void 0;
-var zx_1 = require("zx");
+require("zx/globals");
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 var util_1 = require("util");
@@ -86,11 +86,11 @@ var askForWebUrl = function (prefs) { return __awaiter(void 0, void 0, void 0, f
                         switch (_b.label) {
                             case 0:
                                 if (!(prefs.weburl)) return [3 /*break*/, 2];
-                                return [4 /*yield*/, (0, zx_1.question)("Web Url, default '" + prefs.weburl + "' type url or <enter> to confirm: ")];
+                                return [4 /*yield*/, question("Web Url, default '" + prefs.weburl + "' type url or <enter> to confirm: ")];
                             case 1:
                                 _a = _b.sent();
                                 return [3 /*break*/, 4];
-                            case 2: return [4 /*yield*/, (0, zx_1.question)("Web Url, type an valid url: ")
+                            case 2: return [4 /*yield*/, question("Web Url, type an valid url: ")
                                 // console.log( 'answer', answer )
                             ];
                             case 3:
@@ -126,11 +126,11 @@ var askForFolder = function (prefs) { return __awaiter(void 0, void 0, void 0, f
                         switch (_b.label) {
                             case 0:
                                 if (!(prefs.folder)) return [3 /*break*/, 2];
-                                return [4 /*yield*/, (0, zx_1.question)("Folder, default '" + prefs.folder + "' type url or <enter> to confirm: ")];
+                                return [4 /*yield*/, question("Folder, default '" + prefs.folder + "' type url or <enter> to confirm: ")];
                             case 1:
                                 _a = _b.sent();
                                 return [3 /*break*/, 4];
-                            case 2: return [4 /*yield*/, (0, zx_1.question)("Folder, type an valid folder path: ")
+                            case 2: return [4 /*yield*/, question("Folder, type an valid folder path: ")
                                 // console.log( 'answer', answer )
                             ];
                             case 3:
@@ -196,11 +196,11 @@ var chooseFile = function (files, print) { return __awaiter(void 0, void 0, void
                         switch (_b.label) {
                             case 0:
                                 if (!(files.length === 1)) return [3 /*break*/, 2];
-                                return [4 /*yield*/, (0, zx_1.question)("choose file, default 1: ")];
+                                return [4 /*yield*/, question("choose file, default 1: ")];
                             case 1:
                                 _a = _b.sent();
                                 return [3 /*break*/, 4];
-                            case 2: return [4 /*yield*/, (0, zx_1.question)("choose file [1-" + files.length + "], default 1: ")];
+                            case 2: return [4 /*yield*/, question("choose file [1-" + files.length + "], default 1: ")];
                             case 3:
                                 _a = _b.sent();
                                 _b.label = 4;
@@ -264,7 +264,7 @@ function copyOfficeScriptSimplifiedDeclaration(bodyDirPath) {
                 case 1:
                     //console.log( '__dirname', __dirname )
                     _a.sent();
-                    console.info("declaration file needs installation of '" + zx_1.chalk.yellow('@types/Office.js') + "' running " + zx_1.chalk.inverse('npm install -D @types/office-js'));
+                    console.info("declaration file needs installation of '" + chalk.yellow('@types/Office.js') + "' running " + chalk.inverse('npm install -D @types/office-js'));
                     return [2 /*return*/, 0];
                 case 2:
                     e_2 = _a.sent();

@@ -1,4 +1,4 @@
-import { question,chalk } from "zx"
+import 'zx/globals'
 import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'

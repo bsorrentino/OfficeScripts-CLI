@@ -60,10 +60,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.unpack = void 0;
+require("zx/globals");
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 var util_1 = require("util");
-var zx_1 = require("zx");
 var osts_utils_1 = require("./osts-utils");
 var fsWriteFile = (0, util_1.promisify)(fs.writeFile);
 var fsMkdir = (0, util_1.promisify)(fs.mkdir);
@@ -104,9 +104,9 @@ function unpack(bodyDirPath, copyOfficeScriptSimplifiedDeclaration) {
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 9, , 10]);
-                    zx_1.$.verbose = false;
+                    $.verbose = false;
                     JMESPathQuery = "[?ends_with(Name, '.osts')]";
-                    return [4 /*yield*/, (0, zx_1.$)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["m365 spo file list --webUrl ", " --folder ", " --recursive --query ", ""], ["m365 spo file list --webUrl ", " --folder ", " --recursive --query ", ""])), prefs.weburl, prefs.folder, JMESPathQuery)];
+                    return [4 /*yield*/, $(templateObject_1 || (templateObject_1 = __makeTemplateObject(["m365 spo file list --webUrl ", " --folder ", " --recursive --query ", ""], ["m365 spo file list --webUrl ", " --folder ", " --recursive --query ", ""])), prefs.weburl, prefs.folder, JMESPathQuery)];
                 case 3:
                     result = _a.sent();
                     spoFileListResult = JSON.parse(result.stdout);
@@ -121,7 +121,7 @@ function unpack(bodyDirPath, copyOfficeScriptSimplifiedDeclaration) {
                         return [2 /*return*/, -1];
                     }
                     // $.verbose = true
-                    return [4 /*yield*/, (0, zx_1.$)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["m365 spo file get --webUrl ", " --id ", " --asFile --path ", ""], ["m365 spo file get --webUrl ", " --id ", " --asFile --path ", ""])), prefs.weburl, selectedFile.UniqueId, selectedFile.Name)];
+                    return [4 /*yield*/, $(templateObject_2 || (templateObject_2 = __makeTemplateObject(["m365 spo file get --webUrl ", " --id ", " --asFile --path ", ""], ["m365 spo file get --webUrl ", " --id ", " --asFile --path ", ""])), prefs.weburl, selectedFile.UniqueId, selectedFile.Name)];
                 case 5:
                     // $.verbose = true
                     _a.sent();

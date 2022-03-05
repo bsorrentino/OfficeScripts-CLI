@@ -1,20 +1,29 @@
 {
   "name": "@bsorrentino/osts-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CLI for manage OSTS files",
   "types": "office-js-simplified.d.ts",
   "bin": {
     "osts": "./index.js"
   },
+  "homepage": "https://github.com/bsorrentino/OfficeScripts-CLI.git",
+  "bugs": {
+    "url": "https://github.com/bsorrentino/OfficeScripts-CLI.git",
+    "email": "bartolomeo.sorrentino@gmail.com"
+  },
+  "author": "bsorrentino <bartolomeo.sorrentino@gmail.com> (http://soulsoftware-bsc.blogspot.it/)",
+  "keywords": [
+    "Office365",
+    "OfficeScript",
+    "Excel365"
+  ],
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "pack": "node index.js pack",
     "unpack": "node index.js unpack",
-    "test":""
+    "test": ""
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.11.5",
@@ -26,9 +35,8 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "minimist": "^1.2.5",
     "preferences": "^2.0.2",
-    "zx": "^4.2.0"
+    "zx": "^5.2.0"
   },
   "repository": {
     "type": "git",
