@@ -1,3 +1,10 @@
+[![npm](https://img.shields.io/npm/v/@bsorrentino/osts-cli.svg)](https://www.npmjs.com/package/@bsorrentino/osts-cli)&nbsp;
+<img src="https://img.shields.io/github/forks/bsorrentino/OfficeScripts-CLI.svg">&nbsp;
+<img src="https://img.shields.io/github/stars/bsorrentino/OfficeScripts-CLI.svg">&nbsp;
+<a href="https://github.com/bsorrentino/OfficeScripts-CLI/issues">
+<img src="https://img.shields.io/github/issues/bsorrentino/OfficeScripts-CLI.svg"></a>&nbsp;
+![npm publishing](https://github.com/bsorrentino/OfficeScripts-CLI/actions/workflows/npm-publish.yml/badge.svg)
+
 # OfficeScripts-CLI
 CLI for manage OSTS files
 
