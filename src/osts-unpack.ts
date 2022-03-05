@@ -1,7 +1,7 @@
+import 'zx/globals'
 import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
-import { $ } from 'zx'
 
 import { chooseFile, loadOSTS, askForPreferences, savePreferences, SPOFile, copyOfficeScriptSimplifiedDeclaration as CP_D_TS } from './osts-utils'
 
