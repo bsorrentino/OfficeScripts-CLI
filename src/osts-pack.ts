@@ -1,8 +1,9 @@
+import 'zx/globals'
 import * as fs from 'fs'
 import * as path from 'path'
 import { exit } from 'process'
 import {promisify } from 'util'
-import {$, question } from 'zx'
+
 
 import { askForPreferences, chooseFile, loadOSTS, savePreferences } from './osts-utils'
 

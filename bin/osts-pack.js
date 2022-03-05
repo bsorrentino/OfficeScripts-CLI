@@ -60,10 +60,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.pack = void 0;
+require("zx/globals");
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 var util_1 = require("util");
-var zx_1 = require("zx");
 var osts_utils_1 = require("./osts-utils");
 var fsreadFile = (0, util_1.promisify)(fs.readFile);
 var fswriteFile = (0, util_1.promisify)(fs.writeFile);
@@ -72,7 +72,7 @@ var askForConfirmUpload = function () { return __awaiter(void 0, void 0, void 0,
     var answer;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, zx_1.question)('do you want upload file? (Y/n): ')];
+            case 0: return [4 /*yield*/, question('do you want upload file? (Y/n): ')];
             case 1:
                 answer = (_a.sent())
                     .trim()
@@ -118,7 +118,7 @@ function pack(bodyDirPath) {
                     prefs = _a.sent();
                     if (!prefs)
                         return [2 /*return*/, 1];
-                    return [4 /*yield*/, (0, zx_1.$)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["m365 spo file add  --webUrl ", " --folder ", " --path ", ""], ["m365 spo file add  --webUrl ", " --folder ", " --path ", ""])), prefs.weburl, prefs.folder, selectedFile)];
+                    return [4 /*yield*/, $(templateObject_1 || (templateObject_1 = __makeTemplateObject(["m365 spo file add  --webUrl ", " --folder ", " --path ", ""], ["m365 spo file add  --webUrl ", " --folder ", " --path ", ""])), prefs.weburl, prefs.folder, selectedFile)];
                 case 8:
                     _a.sent();
                     (0, osts_utils_1.savePreferences)(prefs);
