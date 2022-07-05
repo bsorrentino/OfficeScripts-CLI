@@ -1,11 +1,12 @@
 {
   "name": "@bsorrentino/osts-cli",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "CLI for manage OSTS files",
   "types": "office-js-simplified.d.ts",
   "bin": {
     "osts": "./index.js"
   },
+  "type": "module",
   "homepage": "https://github.com/bsorrentino/OfficeScripts-CLI.git",
   "bugs": {
     "url": "https://github.com/bsorrentino/OfficeScripts-CLI.git",
@@ -20,31 +21,75 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "pack": "node index.js pack",
-    "unpack": "node index.js unpack",
-    "test": ""
+    "pack": "node index.mjs pack",
+    "unpack": "node index.mjs unpack",
+    "test": "",
+    "changelog": "standard-version --skip.tag=true --skip.bump=true --skip.commit=true"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.11.5",
-    "@types/office-js": "^1.0.217",
-    "cz-conventional-changelog": "^3.3.0",
-    "typescript": "^4.4.4"
+    "@types/office-js": "^1.0.266",
+    "typescript": "^4.7.4"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "minimist": "^1.2.6",
     "preferences": "^2.0.2",
-    "zx": "^5.2.0"
+    "zx": "^7.0.7"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/bsorrentino/OfficeScripts-CLI.git"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "standard-version": {
+    "skip": {
+      "bump": true,
+      "commit": true,
+      "changelog": false,
+      "tag": true
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "section": "Documentation"
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Refactoring"
+      },
+      {
+        "type": "perf",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      },
+      {
+        "type": "build",
+        "section": "Build"
+      }
+    ],
+    "commitUrlFormat": "https://github.com/bsorrentino/OfficeScripts-CLI/commits/{{hash}}",
+    "compareUrlFormat": "https://github.com/bsorrentino/OfficeScripts-CLI.git/compare/{{previousTag}}...{{currentTag}}"
   }
 }

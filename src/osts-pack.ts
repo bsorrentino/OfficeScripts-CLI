@@ -1,11 +1,10 @@
 import 'zx/globals'
 import * as fs from 'fs'
 import * as path from 'path'
-import { exit } from 'process'
 import {promisify } from 'util'
 
 
-import { askForPreferences, chooseFile, loadOSTS, savePreferences } from './osts-utils'
+import { askForPreferences, chooseFile, loadOSTS, savePreferences } from './osts-utils.js'
 
 const fsreadFile = promisify(fs.readFile)
 const fswriteFile = promisify(fs.writeFile)

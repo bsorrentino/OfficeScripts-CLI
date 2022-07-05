@@ -1,8 +1,8 @@
 import minimist, {ParsedArgs } from "minimist";
 import { exit } from "process";
-import { pack } from './osts-pack'
-import { unpack } from './osts-unpack'
-import { copyOfficeScriptSimplifiedDeclaration } from "./osts-utils";
+import { pack } from './osts-pack.js'
+import { unpack } from './osts-unpack.js'
+import { copyOfficeScriptSimplifiedDeclaration } from "./osts-utils.js";
 
 const DEFAULT_PATH = 'osts'
 
