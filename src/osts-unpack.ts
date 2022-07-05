@@ -3,7 +3,13 @@ import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
 
-import { chooseFile, loadOSTS, askForPreferences, savePreferences, SPOFile, copyOfficeScriptSimplifiedDeclaration as CP_D_TS } from './osts-utils'
+import { 
+    chooseFile, 
+    loadOSTS, 
+    askForPreferences, 
+    savePreferences, 
+    SPOFile, 
+    copyOfficeScriptSimplifiedDeclaration as CP_D_TS } from './osts-utils.js'
 
 const fsWriteFile = promisify(fs.writeFile)
 const fsMkdir = promisify(fs.mkdir)
