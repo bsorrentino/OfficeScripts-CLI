@@ -1,4 +1,4 @@
 #!/usr/bin/env node 
 "use strict";
 
-require("./bin/osts-cli.js");
+import "./bin/osts-cli.js";
