@@ -5,12 +5,30 @@
 ## [Unreleased](https://gitlab.com/html-validate/html-validate/compare/Unreleased) ()
 
 
+### Bug Fixes
+
+ -  update distribution file list ([a566d83baf5041b](https://gitlab.com/html-validate/html-validate/commit/a566d83baf5041b194cc48ad4d46e79331dafc98))
+
+
+
+
+
+"name: v1.0.1" is a release tag
+
+## [v1.0.1](https://gitlab.com/html-validate/html-validate/compare/v1.0.1) (2022-08-18)
+
+
 
 ### Documentation
 
+ -  update changelog ([f77d5616feb59a5](https://gitlab.com/html-validate/html-validate/commit/f77d5616feb59a5596b83946ddf1dd1dad87592a))
  -  update changelog ([ad0066b60a934c4](https://gitlab.com/html-validate/html-validate/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 
+### ALM 
+
+ -  update version ([f647e7e5e51c769](https://gitlab.com/html-validate/html-validate/commit/f647e7e5e51c7690a4035785b690a978bdb1a8a4))
+ -  add changelog template ([a83515d5f7b9d45](https://gitlab.com/html-validate/html-validate/commit/a83515d5f7b9d45b38d60db20d5f0122a929ed62))
 
 
 "name: v1.0.0" is a release tag
