@@ -1,8 +1,11 @@
 {
   "name": "@bsorrentino/osts-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for manage OSTS files",
   "types": "office-js-simplified.d.ts",
+  "files": [
+    "bin/*.js"
+  ],
   "bin": {
     "osts": "./index.js"
   },
@@ -24,7 +27,7 @@
     "pack": "node index.mjs pack",
     "unpack": "node index.mjs unpack",
     "test": "",
-    "changelog": "standard-version --skip.tag=true --skip.bump=true --skip.commit=true"
+    "changelog": "git-changelog-command-line -of CHANGELOG.md"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.2",
@@ -43,53 +46,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bsorrentino/OfficeScripts-CLI.git"
-  },
-  "standard-version": {
-    "skip": {
-      "bump": true,
-      "commit": true,
-      "changelog": false,
-      "tag": true
-    },
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes"
-      },
-      {
-        "type": "chore",
-        "hidden": true
-      },
-      {
-        "type": "docs",
-        "section": "Documentation"
-      },
-      {
-        "type": "style",
-        "hidden": true
-      },
-      {
-        "type": "refactor",
-        "section": "Refactoring"
-      },
-      {
-        "type": "perf",
-        "hidden": true
-      },
-      {
-        "type": "test",
-        "hidden": true
-      },
-      {
-        "type": "build",
-        "section": "Build"
-      }
-    ],
-    "commitUrlFormat": "https://github.com/bsorrentino/OfficeScripts-CLI/commits/{{hash}}",
-    "compareUrlFormat": "https://github.com/bsorrentino/OfficeScripts-CLI.git/compare/{{previousTag}}...{{currentTag}}"
   }
 }
