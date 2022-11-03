@@ -10,6 +10,26 @@
 
 
 
+"name: v1.0.3" is a release tag
+
+## [v1.0.3](https://gitlab.com/html-validate/html-validate/compare/v1.0.3) (2022-11-03)
+
+### Features
+
+ -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://gitlab.com/html-validate/html-validate/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
+
+
+### Documentation
+
+ -  update changelog ([f469f5815d991f1](https://gitlab.com/html-validate/html-validate/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
+ -  update changelog ([ad0066b60a934c4](https://gitlab.com/html-validate/html-validate/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
+
+### Refactor
+
+ -  **new-release**  update release version ([6a08036f90e2c3c](https://gitlab.com/html-validate/html-validate/commit/6a08036f90e2c3c073c30181a53634d2216d5b67))
+
+
+
 "name: v1.0.2" is a release tag
 
 ## [v1.0.2](https://gitlab.com/html-validate/html-validate/compare/v1.0.2) (2022-08-18)
@@ -22,7 +42,6 @@
 ### Documentation
 
  -  update changelog ([7daff6e3d2e72db](https://gitlab.com/html-validate/html-validate/commit/7daff6e3d2e72db7f53654a834ddc01699cd0971))
- -  update changelog ([ad0066b60a934c4](https://gitlab.com/html-validate/html-validate/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 
 
