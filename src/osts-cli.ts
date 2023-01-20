@@ -12,7 +12,7 @@ function help() {
     console.log(`
 Usage:
 ========
-osts list --path  // list OSTS packages in SPO path. 
+osts list[--path]  // list OSTS packages in SPO path. 
 
 osts unpack [--path, -p <dest dir> [--dts] ] // download OSTS package and extract body (.ts) to dest dir (default '${DEFAULT_PATH}'). 
                                              // If --dts is specified an Office Script Simplified TS Declaration  file will be copied in dest dir
