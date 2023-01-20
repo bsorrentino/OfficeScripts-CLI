@@ -2,129 +2,133 @@
 
 
 
-## [Unreleased](https://gitlab.com/html-validate/html-validate/compare/Unreleased) ()
+## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
 
-
-
-
-
-
-
-
-## [v1.1](https://gitlab.com/html-validate/html-validate/compare/v1.1) (2023-01-20)
-
-### Features
-
- -  add 'list' command ([f7c68b033ba713c](https://gitlab.com/html-validate/html-validate/commit/f7c68b033ba713c91927145c3a50639e18bf7675))
 
 
 ### Documentation
 
- -  changelog.md ([ccde96023104a96](https://gitlab.com/html-validate/html-validate/commit/ccde96023104a96f474c75f3dc5fe08efad7c43b))
- -  update cli help ([895fd05c0f884c5](https://gitlab.com/html-validate/html-validate/commit/895fd05c0f884c57137de96cda8374958cfeb912))
- -  **changelog.md**  update changelog ([e1a603bacd6859d](https://gitlab.com/html-validate/html-validate/commit/e1a603bacd6859dadeaa6b07dde7d965f6f1da13))
- -  **changelog**  update changelog ([d1c15a2cad8218b](https://gitlab.com/html-validate/html-validate/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
+ -  update readme ([837a82c9e39af80](https://github.com/bsorrentino/OfficeScripts-CLI/commit/837a82c9e39af804994ee66015bb423770a44651))
+ -  update chanelog ([deea61f717093de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/deea61f717093deb0c7c3560ccc190f4d39bcb0d))
+
+
+
+
+
+## [v1.1](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.1) (2023-01-20)
+
+### Features
+
+ -  add 'list' command ([f7c68b033ba713c](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f7c68b033ba713c91927145c3a50639e18bf7675))
+
+
+### Documentation
+
+ -  changelog.md ([ccde96023104a96](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ccde96023104a96f474c75f3dc5fe08efad7c43b))
+ -  update cli help ([895fd05c0f884c5](https://github.com/bsorrentino/OfficeScripts-CLI/commit/895fd05c0f884c57137de96cda8374958cfeb912))
+ -  **changelog.md**  update changelog ([e1a603bacd6859d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e1a603bacd6859dadeaa6b07dde7d965f6f1da13))
+ -  **changelog**  update changelog ([d1c15a2cad8218b](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
 
 
 
 
 "name: v1.0.3" is a release tag
 
-## [v1.0.3](https://gitlab.com/html-validate/html-validate/compare/v1.0.3) (2022-11-03)
+## [v1.0.3](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.0.3) (2022-11-03)
 
 ### Features
 
- -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://gitlab.com/html-validate/html-validate/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
+ -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
 
 
 ### Documentation
 
- -  update changelog ([f469f5815d991f1](https://gitlab.com/html-validate/html-validate/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
- -  update changelog ([ad0066b60a934c4](https://gitlab.com/html-validate/html-validate/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
+ -  update changelog ([f469f5815d991f1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
+ -  update changelog ([ad0066b60a934c4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 ### Refactor
 
- -  **new-release**  update release version ([6a08036f90e2c3c](https://gitlab.com/html-validate/html-validate/commit/6a08036f90e2c3c073c30181a53634d2216d5b67))
+ -  **new-release**  update release version ([6a08036f90e2c3c](https://github.com/bsorrentino/OfficeScripts-CLI/commit/6a08036f90e2c3c073c30181a53634d2216d5b67))
 
 
 
 "name: v1.0.2" is a release tag
 
-## [v1.0.2](https://gitlab.com/html-validate/html-validate/compare/v1.0.2) (2022-08-18)
+## [v1.0.2](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.0.2) (2022-08-18)
 
 
 ### Bug Fixes
 
- -  update distribution file list ([a566d83baf5041b](https://gitlab.com/html-validate/html-validate/commit/a566d83baf5041b194cc48ad4d46e79331dafc98))
+ -  update distribution file list ([a566d83baf5041b](https://github.com/bsorrentino/OfficeScripts-CLI/commit/a566d83baf5041b194cc48ad4d46e79331dafc98))
 
 ### Documentation
 
- -  update changelog ([7daff6e3d2e72db](https://gitlab.com/html-validate/html-validate/commit/7daff6e3d2e72db7f53654a834ddc01699cd0971))
+ -  update changelog ([7daff6e3d2e72db](https://github.com/bsorrentino/OfficeScripts-CLI/commit/7daff6e3d2e72db7f53654a834ddc01699cd0971))
 
 
 
 
 "name: v1.0.1" is a release tag
 
-## [v1.0.1](https://gitlab.com/html-validate/html-validate/compare/v1.0.1) (2022-08-18)
+## [v1.0.1](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.0.1) (2022-08-18)
 
 
 
 ### Documentation
 
- -  update changelog ([f77d5616feb59a5](https://gitlab.com/html-validate/html-validate/commit/f77d5616feb59a5596b83946ddf1dd1dad87592a))
+ -  update changelog ([f77d5616feb59a5](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f77d5616feb59a5596b83946ddf1dd1dad87592a))
 
 
 ### ALM 
 
- -  update version ([f647e7e5e51c769](https://gitlab.com/html-validate/html-validate/commit/f647e7e5e51c7690a4035785b690a978bdb1a8a4))
- -  add changelog template ([a83515d5f7b9d45](https://gitlab.com/html-validate/html-validate/commit/a83515d5f7b9d45b38d60db20d5f0122a929ed62))
+ -  update version ([f647e7e5e51c769](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f647e7e5e51c7690a4035785b690a978bdb1a8a4))
+ -  add changelog template ([a83515d5f7b9d45](https://github.com/bsorrentino/OfficeScripts-CLI/commit/a83515d5f7b9d45b38d60db20d5f0122a929ed62))
 
 
 "name: v1.0.0" is a release tag
 
-## [v1.0.0](https://gitlab.com/html-validate/html-validate/compare/v1.0.0) (2022-07-05)
+## [v1.0.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.0.0) (2022-07-05)
 
 
 
 ### Documentation
 
- -  add changelog ([71ef8d950278fb7](https://gitlab.com/html-validate/html-validate/commit/71ef8d950278fb788189da9ac0a6a9701036886a))
+ -  add changelog ([71ef8d950278fb7](https://github.com/bsorrentino/OfficeScripts-CLI/commit/71ef8d950278fb788189da9ac0a6a9701036886a))
 
 
 ### ALM 
 
- -  install minimist ([53521a3ff3945a8](https://gitlab.com/html-validate/html-validate/commit/53521a3ff3945a86ec518d6356166f1e06285380))
- -  upgrade @types/office-js to 1.0.266 ([858b880fb20cf81](https://gitlab.com/html-validate/html-validate/commit/858b880fb20cf810e46cad14431cb32bcd062170))
- -  move to next release version ([1521f3c3ef52730](https://gitlab.com/html-validate/html-validate/commit/1521f3c3ef5273084a8fa0029f57756edd4a53de))
- -  remove committizen compliance ([0741657c1ef76b2](https://gitlab.com/html-validate/html-validate/commit/0741657c1ef76b2aaed9c54b3df5810986f14ff2))
- -  move to node16, zx7 and esnex module resolution ([4cefb81f65a50bb](https://gitlab.com/html-validate/html-validate/commit/4cefb81f65a50bb9ea9039b3d6a9c6cb71c88385))
+ -  install minimist ([53521a3ff3945a8](https://github.com/bsorrentino/OfficeScripts-CLI/commit/53521a3ff3945a86ec518d6356166f1e06285380))
+ -  upgrade @types/office-js to 1.0.266 ([858b880fb20cf81](https://github.com/bsorrentino/OfficeScripts-CLI/commit/858b880fb20cf810e46cad14431cb32bcd062170))
+ -  move to next release version ([1521f3c3ef52730](https://github.com/bsorrentino/OfficeScripts-CLI/commit/1521f3c3ef5273084a8fa0029f57756edd4a53de))
+ -  remove committizen compliance ([0741657c1ef76b2](https://github.com/bsorrentino/OfficeScripts-CLI/commit/0741657c1ef76b2aaed9c54b3df5810986f14ff2))
+ -  move to node16, zx7 and esnex module resolution ([4cefb81f65a50bb](https://github.com/bsorrentino/OfficeScripts-CLI/commit/4cefb81f65a50bb9ea9039b3d6a9c6cb71c88385))
 
 
 "name: v0.3.0" is a release tag
 
-## [v0.3.0](https://gitlab.com/html-validate/html-validate/compare/v0.3.0) (2022-03-05)
+## [v0.3.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v0.3.0) (2022-03-05)
 
 
 
 ### Documentation
 
- -  update readme ([adf0f5f618d70e4](https://gitlab.com/html-validate/html-validate/commit/adf0f5f618d70e45714ee02d195a0c107f14acac))
+ -  update readme ([adf0f5f618d70e4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/adf0f5f618d70e45714ee02d195a0c107f14acac))
 
 ### Refactor
 
- -  import zx/globals instead of selective imports ([00a5d1ae52528bf](https://gitlab.com/html-validate/html-validate/commit/00a5d1ae52528bfe7d035b592f88885a32bd483c))
+ -  import zx/globals instead of selective imports ([00a5d1ae52528bf](https://github.com/bsorrentino/OfficeScripts-CLI/commit/00a5d1ae52528bfe7d035b592f88885a32bd483c))
 
 ### ALM 
 
- -  update zx dep, set next release ([fe09f0fc8d9a153](https://gitlab.com/html-validate/html-validate/commit/fe09f0fc8d9a153396ff9a18922bdcb97ca337e6))
- -  add test script ([800d8c7ce713683](https://gitlab.com/html-validate/html-validate/commit/800d8c7ce713683a4253d505686d94a544a130d7))
- -  make compliant with commitizen ([646f6008bccf1e7](https://gitlab.com/html-validate/html-validate/commit/646f6008bccf1e7af54ca359514daead807bcfdc))
+ -  update zx dep, set next release ([fe09f0fc8d9a153](https://github.com/bsorrentino/OfficeScripts-CLI/commit/fe09f0fc8d9a153396ff9a18922bdcb97ca337e6))
+ -  add test script ([800d8c7ce713683](https://github.com/bsorrentino/OfficeScripts-CLI/commit/800d8c7ce713683a4253d505686d94a544a130d7))
+ -  make compliant with commitizen ([646f6008bccf1e7](https://github.com/bsorrentino/OfficeScripts-CLI/commit/646f6008bccf1e7af54ca359514daead807bcfdc))
 
 
 "name: v0.2.0" is a release tag
 
-## [v0.2.0](https://gitlab.com/html-validate/html-validate/compare/v0.2.0) (2021-11-24)
+## [v0.2.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v0.2.0) (2021-11-24)
 
 
 
@@ -134,7 +138,7 @@
 
 "name: v0.1.2" is a release tag
 
-## [v0.1.2](https://gitlab.com/html-validate/html-validate/compare/v0.1.2) (2021-11-11)
+## [v0.1.2](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v0.1.2) (2021-11-11)
 
 
 
@@ -144,7 +148,7 @@
 
 "name: v0.1.1" is a release tag
 
-## [v0.1.1](https://gitlab.com/html-validate/html-validate/compare/v0.1.1) (2021-11-11)
+## [v0.1.1](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v0.1.1) (2021-11-11)
 
 
 
@@ -154,13 +158,13 @@
 
 "name: v0.1.0" is a release tag
 
-## [v0.1.0](https://gitlab.com/html-validate/html-validate/compare/v0.1.0) (2021-11-05)
+## [v0.1.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v0.1.0) (2021-11-05)
 
 
 
 
 ### Refactor
 
- -  **clean**  remove unused file ([8ef49007bdd1233](https://gitlab.com/html-validate/html-validate/commit/8ef49007bdd12333fba0faa392b736c8bccb2e0d))
+ -  **clean**  remove unused file ([8ef49007bdd1233](https://github.com/bsorrentino/OfficeScripts-CLI/commit/8ef49007bdd12333fba0faa392b736c8bccb2e0d))
 
 
