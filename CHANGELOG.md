@@ -4,6 +4,15 @@
 
 ## [Unreleased](https://gitlab.com/html-validate/html-validate/compare/Unreleased) ()
 
+
+
+
+
+
+
+
+## [v1.1](https://gitlab.com/html-validate/html-validate/compare/v1.1) (2023-01-20)
+
 ### Features
 
  -  add 'list' command ([f7c68b033ba713c](https://gitlab.com/html-validate/html-validate/commit/f7c68b033ba713c91927145c3a50639e18bf7675))
@@ -11,6 +20,7 @@
 
 ### Documentation
 
+ -  changelog.md ([ccde96023104a96](https://gitlab.com/html-validate/html-validate/commit/ccde96023104a96f474c75f3dc5fe08efad7c43b))
  -  update cli help ([895fd05c0f884c5](https://gitlab.com/html-validate/html-validate/commit/895fd05c0f884c57137de96cda8374958cfeb912))
  -  **changelog.md**  update changelog ([e1a603bacd6859d](https://gitlab.com/html-validate/html-validate/commit/e1a603bacd6859dadeaa6b07dde7d965f6f1da13))
  -  **changelog**  update changelog ([d1c15a2cad8218b](https://gitlab.com/html-validate/html-validate/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
