@@ -2,7 +2,7 @@ import minimist, {ParsedArgs } from "minimist";
 import { exit } from "process";
 import { pack } from './osts-pack.js'
 import { unpack } from './osts-unpack.js'
-import { copyOfficeScriptSimplifiedDeclaration } from "./osts-utils.js";
+import { askForPreferences, copyOfficeScriptSimplifiedDeclaration, listOfficeScript, savePreferences } from "./osts-utils.js";
 
 const DEFAULT_PATH = 'osts'
 
@@ -12,6 +12,7 @@ function help() {
     console.log(`
 Usage:
 ========
+osts list[--path]  // list OSTS packages in SPO path. 
 
 osts unpack [--path, -p <dest dir> [--dts] ] // download OSTS package and extract body (.ts) to dest dir (default '${DEFAULT_PATH}'). 
                                              // If --dts is specified an Office Script Simplified TS Declaration  file will be copied in dest dir
@@ -31,7 +32,7 @@ osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration f
         boolean: 'dts',
         alias: { 'p': 'path'},
         'default': { 'path' : DEFAULT_PATH},
-        unknown: (args: string) => args.toLowerCase()==='pack' || args.toLowerCase()==='unpack' || args.toLowerCase()==='dts' 
+        unknown: (args: string) =>  /pack|unpack|list|dts/i.test(args)
     })
     
     // console.log( cli );
@@ -45,17 +46,35 @@ osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration f
 
     try {
 
-        // console.log( 'path', cli['path'], _path() )
+        const command = _cmd()
 
-        if( _cmd() === 'pack') {
+        // console.log( 'command', command, 'path', cli['path'], _path() )
+
+        if( command === 'list' ) {
+            const prefs = await askForPreferences()   
+            if( !prefs ) exit(-1)
+            
+            const result = await listOfficeScript( prefs )
+
+            console.table( result.map( file => ({ 
+                Name: file.Name, 
+                Length: `${file.Length} bytes`, 
+                RelativeUrl: path.dirname(path.relative( prefs.toPath(), file.ServerRelativeUrl ))
+            })) )
+           
+            savePreferences( prefs )
+            
+            exit(0)
+        }
+        else if( command === 'pack') {
             const code = await pack( _path() )
             exit(code)
         }
-        else if( _cmd() === 'unpack' ) {
+        else if( command === 'unpack' ) {
             const code = await unpack( _path(), cli['dts'] )
             exit(code)
         }
-        else if( _cmd() === 'dts' ) {
+        else if( command === 'dts' ) {
             const code = await copyOfficeScriptSimplifiedDeclaration( _path() )
             exit(code)
         }

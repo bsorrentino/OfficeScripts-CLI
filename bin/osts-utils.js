@@ -43,7 +43,11 @@ export const askForPreferences = async () => {
     const candidateFolder = await askForFolder(_prefs);
     if (!candidateFolder)
         return;
-    return { weburl: candidateWebUrl, folder: candidateFolder };
+    return {
+        weburl: candidateWebUrl,
+        folder: candidateFolder,
+        toPath: () => path.join(new URL(candidateWebUrl).pathname, candidateFolder)
+    };
 };
 export const savePreferences = (data) => {
     _prefs.weburl = data.weburl;
@@ -90,4 +94,15 @@ export async function copyOfficeScriptSimplifiedDeclaration(bodyDirPath) {
         console.error('failed to copy declaration file', e);
         return -1;
     }
+}
+export async function listOfficeScript(prefs) {
+    const list_parameters = [
+        '--webUrl', prefs.weburl,
+        '--folder', prefs.folder,
+        '--query', "[?ends_with(Name, '.osts')]",
+        '--recursive'
+    ];
+    const result = await $ `m365 spo file list ${list_parameters}`.quiet();
+    const spoFileListResult = JSON.parse(result.stdout);
+    return spoFileListResult;
 }
