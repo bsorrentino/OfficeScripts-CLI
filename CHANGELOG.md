@@ -4,8 +4,14 @@
 
 ## [Unreleased](https://gitlab.com/html-validate/html-validate/compare/Unreleased) ()
 
+### Features
+
+ -  add 'list' command ([f7c68b033ba713c](https://gitlab.com/html-validate/html-validate/commit/f7c68b033ba713c91927145c3a50639e18bf7675))
 
 
+### Documentation
+
+ -  **changelog**  update changelog ([d1c15a2cad8218b](https://gitlab.com/html-validate/html-validate/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
 
 
 
