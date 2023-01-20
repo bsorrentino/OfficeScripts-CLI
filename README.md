@@ -23,6 +23,12 @@ Install [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/)
 > yarn global add @pnp/cli-microsoft365
 > ```
 
+login on Office365
+>
+> ```
+> m365 login
+> ```
+
 ## Install
 
 ```
@@ -34,7 +40,7 @@ npm install -g @bsorrentino/osts-cli
 ```
 Usage:
 ========
-osts list[--path]  // list OSTS packages in SPO path. 
+osts list  // list OSTS packages in SPO path. 
 
 osts unpack [--path, -p <dest dir> [--dts] ] // download OSTS package and extract body (.ts) to dest dir (default 'osts'). 
                                              // If --dts is specified an Office Script Simplified TS Declaration  file will be copied in dest dir
