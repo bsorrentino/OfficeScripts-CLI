@@ -9,7 +9,13 @@ import {
     askForPreferences, 
     savePreferences, 
     SPOFile, 
-    copyOfficeScriptSimplifiedDeclaration as CP_D_TS } from './osts-utils.js'
+    copyOfficeScriptSimplifiedDeclaration as CP_D_TS, 
+    listOfficeScript} from './osts-utils.js'
+
+export interface Options {
+    copyOfficeScriptSimplifiedDeclaration?:boolean
+    
+} 
 
 const fsWriteFile = promisify(fs.writeFile)
 const fsMkdir = promisify(fs.mkdir)
@@ -35,10 +41,7 @@ export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDecl
 
         $.verbose = false
         
-        const JMESPathQuery = `[?ends_with(Name, '.osts')]`
-        const result = await $`m365 spo file list --webUrl ${prefs.weburl} --folder ${prefs.folder} --recursive --query ${JMESPathQuery}`
-
-        const spoFileListResult = JSON.parse( result.stdout ) as Array<SPOFile>
+        const spoFileListResult = await listOfficeScript( prefs )
 
         if( !spoFileListResult.length || spoFileListResult.length === 0 ) {
             console.error( `no OSTS files detected at folder '${prefs.folder}` )

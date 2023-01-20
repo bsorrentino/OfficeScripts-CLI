@@ -18,12 +18,20 @@ export type LoadedOSTS = OSTS & { bodyFilePath:string }
 export interface PreferenceData {
     weburl:string,
     folder:string
+    toPath:() => string
 }
 
 export interface SPOFile {
-    Name: string,
-    ServerRelativeUrl: string,
+    Name: string
+    ServerRelativeUrl: string
     UniqueId:string
+    Length:number
+    Level:number
+    Exists:boolean
+    MajorVersion:number
+    MinorVersion:number
+    TimeCreated:Date
+    TimeLastModified:Date
 }
 
 const askForWebUrl = async (prefs:Partial<PreferenceData>) => {
@@ -79,7 +87,11 @@ export const askForPreferences = async ():Promise<PreferenceData|undefined> => {
     const candidateFolder = await askForFolder( _prefs )
     if( !candidateFolder ) return
 
-    return { weburl:candidateWebUrl, folder:candidateFolder }
+    return { 
+        weburl:candidateWebUrl, 
+        folder:candidateFolder, 
+        toPath: () => path.join( new URL( candidateWebUrl ).pathname, candidateFolder) 
+    }
 
 }
 
@@ -155,3 +167,19 @@ export async function copyOfficeScriptSimplifiedDeclaration( bodyDirPath:string 
          return -1
      }
  }
+
+
+ export async function listOfficeScript( prefs: PreferenceData ): Promise<Array<SPOFile>> {
+
+    const list_parameters = [
+        '--webUrl', prefs.weburl,
+        '--folder', prefs.folder,
+        '--query', "[?ends_with(Name, '.osts')]",
+        '--recursive'
+    ]
+    const result =  await $`m365 spo file list ${list_parameters}`.quiet()
+    
+    const spoFileListResult = JSON.parse( result.stdout ) as Array<SPOFile>
+
+    return spoFileListResult
+ } 
