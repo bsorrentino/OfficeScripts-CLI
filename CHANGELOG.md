@@ -11,6 +11,8 @@
 
 ### Documentation
 
+ -  update cli help ([895fd05c0f884c5](https://gitlab.com/html-validate/html-validate/commit/895fd05c0f884c57137de96cda8374958cfeb912))
+ -  **changelog.md**  update changelog ([e1a603bacd6859d](https://gitlab.com/html-validate/html-validate/commit/e1a603bacd6859dadeaa6b07dde7d965f6f1da13))
  -  **changelog**  update changelog ([d1c15a2cad8218b](https://gitlab.com/html-validate/html-validate/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
 
 
