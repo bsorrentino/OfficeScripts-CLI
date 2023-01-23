@@ -1,6 +1,6 @@
 {
   "name": "@bsorrentino/osts-cli",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "CLI for manage OSTS files",
   "types": "office-js-simplified.d.ts",
   "files": [

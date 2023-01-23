@@ -4,7 +4,13 @@
 
 ## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
 
+### Features
 
+ -  auto detect logged user OSTS url. issue #1 ([addd07537bb3155](https://github.com/bsorrentino/OfficeScripts-CLI/commit/addd07537bb3155b157b18bb7c935f896c6bf2bd))
+
+### Bug Fixes
+
+ -  update link in changelog ([e86c960af32f685](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e86c960af32f68554fff0781409c99dab2fb9127))
 
 ### Documentation
 
@@ -12,6 +18,10 @@
  -  update chanelog ([deea61f717093de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/deea61f717093deb0c7c3560ccc190f4d39bcb0d))
 
 
+### ALM 
+
+ -  **package.json**  update version ([98ab3f2fb5fe1e8](https://github.com/bsorrentino/OfficeScripts-CLI/commit/98ab3f2fb5fe1e88a14a1c2b0fac8ab4e0b7ca1e))
+ -  update dist files ([5ae7282be082d63](https://github.com/bsorrentino/OfficeScripts-CLI/commit/5ae7282be082d6366b6f1872dd131f65532286e1))
 
 
 
