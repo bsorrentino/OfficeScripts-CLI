@@ -37,12 +37,12 @@ const _prefs = new Preferences('org.bsc.officescripts-cli', {}, {
     encrypt: false
 });
 export const askForPreferences = async () => {
-    const candidateWebUrl = await askForWebUrl(_prefs);
-    if (!candidateWebUrl)
-        return;
-    const candidateFolder = await askForFolder(_prefs);
-    if (!candidateFolder)
-        return;
+    // const candidateWebUrl = await askForWebUrl( _prefs )
+    // if( !candidateWebUrl ) return
+    // const candidateFolder = await askForFolder( _prefs )
+    // if( !candidateFolder ) return
+    const candidateWebUrl = await getWebUrl();
+    const candidateFolder = path.join('Documents', 'Documents', 'Office Scripts');
     return {
         weburl: candidateWebUrl,
         folder: candidateFolder,
@@ -50,8 +50,8 @@ export const askForPreferences = async () => {
     };
 };
 export const savePreferences = (data) => {
-    _prefs.weburl = data.weburl;
-    _prefs.folder = data.folder;
+    // _prefs.weburl = data.weburl
+    // _prefs.folder = data.folder
 };
 export const chooseFile = async (files, print) => {
     files.forEach((file, index) => console.log(`${index + 1}) ${print(file)}`));
@@ -106,3 +106,19 @@ export async function listOfficeScript(prefs) {
     const spoFileListResult = JSON.parse(result.stdout);
     return spoFileListResult;
 }
+export const getWebUrl = async () => {
+    const cmd_status = await $ `m365 status`.quiet();
+    const status = JSON.parse(cmd_status.stdout);
+    if (typeof (status) === 'string') {
+        throw "User not connected!";
+    }
+    const args = [
+        '--query', `[?Owner=='${status.connectedAs}'].Url | [0]`
+    ];
+    const cmd_list = await $ `m365 onedrive list ${args}`.quiet();
+    const url = JSON.parse(cmd_list.stdout);
+    if (url === null) {
+        throw `Owner '${status.connectedAs}' not found!`;
+    }
+    return url;
+};
