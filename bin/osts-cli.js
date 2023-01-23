@@ -18,8 +18,7 @@ osts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default '${D
 osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration file is copied in dest dir
 `);
 }
-// Evaluate command
-(async () => {
+async function main() {
     const cli = minimist(process.argv.slice(2), {
         '--': false,
         string: 'path',
@@ -32,38 +31,42 @@ osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration f
     // Check Arguments
     const _cmd = () => (cli._.length > 0) ? cli._[0].toLowerCase() : undefined;
     const _path = () => cli['path']?.length === 0 ? DEFAULT_PATH : cli.path;
+    const command = _cmd();
+    // console.log( 'command', command, 'path', cli['path'], _path() )
+    if (command === 'list') {
+        const prefs = await askForPreferences();
+        if (!prefs)
+            exit(-1);
+        const result = await listOfficeScript(prefs);
+        console.table(result.map(file => ({
+            Name: file.Name,
+            Length: `${file.Length} bytes`,
+            RelativeUrl: path.dirname(path.relative(prefs.toPath(), file.ServerRelativeUrl))
+        })));
+        savePreferences(prefs);
+        exit(0);
+    }
+    else if (command === 'pack') {
+        const code = await pack(_path());
+        exit(code);
+    }
+    else if (command === 'unpack') {
+        const code = await unpack(_path(), cli['dts']);
+        exit(code);
+    }
+    else if (command === 'dts') {
+        const code = await copyOfficeScriptSimplifiedDeclaration(_path());
+        exit(code);
+    }
+    else {
+        help();
+        exit(0);
+    }
+}
+// Evaluate command
+(async () => {
     try {
-        const command = _cmd();
-        // console.log( 'command', command, 'path', cli['path'], _path() )
-        if (command === 'list') {
-            const prefs = await askForPreferences();
-            if (!prefs)
-                exit(-1);
-            const result = await listOfficeScript(prefs);
-            console.table(result.map(file => ({
-                Name: file.Name,
-                Length: `${file.Length} bytes`,
-                RelativeUrl: path.dirname(path.relative(prefs.toPath(), file.ServerRelativeUrl))
-            })));
-            savePreferences(prefs);
-            exit(0);
-        }
-        else if (command === 'pack') {
-            const code = await pack(_path());
-            exit(code);
-        }
-        else if (command === 'unpack') {
-            const code = await unpack(_path(), cli['dts']);
-            exit(code);
-        }
-        else if (command === 'dts') {
-            const code = await copyOfficeScriptSimplifiedDeclaration(_path());
-            exit(code);
-        }
-        else {
-            help();
-            exit(0);
-        }
+        await main();
     }
     catch (e) {
         console.error('error occurred!', e);
