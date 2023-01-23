@@ -2,11 +2,12 @@
 
 
 
-## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+## [v1.2](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.2) (2023-01-23)
 
 ### Features
 
  -  auto detect logged user OSTS url. issue #1 ([addd07537bb3155](https://github.com/bsorrentino/OfficeScripts-CLI/commit/addd07537bb3155b157b18bb7c935f896c6bf2bd))
+ -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
 
 ### Bug Fixes
 
@@ -14,8 +15,12 @@
 
 ### Documentation
 
+ -  update changelog ([ef7a5c6420cff1a](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ef7a5c6420cff1a41b6d92b223a876999e4ffe23))
  -  update readme ([837a82c9e39af80](https://github.com/bsorrentino/OfficeScripts-CLI/commit/837a82c9e39af804994ee66015bb423770a44651))
  -  update chanelog ([deea61f717093de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/deea61f717093deb0c7c3560ccc190f4d39bcb0d))
+ -  **changelog**  update changelog ([d1c15a2cad8218b](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
+ -  update changelog ([f469f5815d991f1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
+ -  update changelog ([ad0066b60a934c4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 
 ### ALM 
@@ -37,7 +42,6 @@
  -  changelog.md ([ccde96023104a96](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ccde96023104a96f474c75f3dc5fe08efad7c43b))
  -  update cli help ([895fd05c0f884c5](https://github.com/bsorrentino/OfficeScripts-CLI/commit/895fd05c0f884c57137de96cda8374958cfeb912))
  -  **changelog.md**  update changelog ([e1a603bacd6859d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e1a603bacd6859dadeaa6b07dde7d965f6f1da13))
- -  **changelog**  update changelog ([d1c15a2cad8218b](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
 
 
 
@@ -46,15 +50,8 @@
 
 ## [v1.0.3](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.0.3) (2022-11-03)
 
-### Features
-
- -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
 
 
-### Documentation
-
- -  update changelog ([f469f5815d991f1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
- -  update changelog ([ad0066b60a934c4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 ### Refactor
 
