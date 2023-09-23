@@ -1,6 +1,6 @@
 {
   "name": "@bsorrentino/osts-cli",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "CLI for manage OSTS files",
   "types": "office-js-simplified.d.ts",
   "files": [
@@ -32,17 +32,17 @@
   },
   "devDependencies": {
     "@types/minimist": "^1.2.2",
-    "@types/node": "^16.18.11",
-    "@types/office-js": "^1.0.311",
-    "typescript": "^4.7.4"
+    "@types/node": "^16.18.53",
+    "@types/office-js": "^1.0.344",
+    "typescript": "^4.9.5"
   },
   "engines": {
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "minimist": "^1.2.6",
+    "minimist": "^1.2.8",
     "preferences": "^2.0.2",
-    "zx": "^7.0.7"
+    "zx": "^7.2.3"
   },
   "repository": {
     "type": "git",
