@@ -1,5 +1,5 @@
 //
-// Version 1.0.3
+// Version 1.0
 //
 // Adapting excel-js to simplified version
 //
@@ -43,11 +43,13 @@ declare namespace ExcelScript {
         getSort():Excel.TableSort
         getWorksheet(): ExcelScript.Worksheet
 
+        addRow(index?: number, values?: (boolean | string | number)[]): void;
+        addRows(index?: number, values?: (boolean | string | number)[][]): void;
     }
 
     interface Worksheet extends Excel.Worksheet { 
 
-        getTable(name: string): ExcelScript.Table
+        getTable(name: string): ExcelScript.Table|undefined
         getRange(address?:string):ExcelScript.Range
         getTables(): Array<Table>
         getCell(row:number, col:number):ExcelScript.Range
@@ -57,6 +59,7 @@ declare namespace ExcelScript {
 
         getWorksheet(name: string): ExcelScript.Worksheet
         getActiveWorksheet(): ExcelScript.Worksheet
+        getTable(name: string): ExcelScript.Table|undefined
 
     }
 
