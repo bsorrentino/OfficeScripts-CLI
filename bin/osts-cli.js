@@ -3,9 +3,14 @@ import { exit } from "process";
 import { pack } from './osts-pack.js';
 import { unpack } from './osts-unpack.js';
 import { askForPreferences, copyOfficeScriptSimplifiedDeclaration, listOfficeScript, savePreferences } from "./osts-utils.js";
+import { readFile } from 'fs/promises';
 const DEFAULT_PATH = 'osts';
-function help() {
+async function help() {
+    const packageJsonContent = await readFile(new URL('../package.json', import.meta.url));
+    const { version } = JSON.parse(packageJsonContent.toString());
     console.log(`
+${chalk.blue("osts-cli version: ")}${chalk.bgBlue(version)}
+
 Usage:
 ========
 osts list[--path]  // list OSTS packages in SPO path. 
@@ -21,7 +26,7 @@ osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration f
 async function main() {
     const cli = minimist(process.argv.slice(2), {
         '--': false,
-        string: 'path',
+        string: ['path', 'version'],
         boolean: 'dts',
         alias: { 'p': 'path' },
         'default': { 'path': DEFAULT_PATH },
@@ -47,7 +52,7 @@ async function main() {
         exit(0);
     }
     else if (command === 'pack') {
-        const code = await pack(_path());
+        const code = await pack(_path(), cli['version']);
         exit(code);
     }
     else if (command === 'unpack') {
@@ -59,7 +64,7 @@ async function main() {
         exit(code);
     }
     else {
-        help();
+        await help();
         exit(0);
     }
 }
