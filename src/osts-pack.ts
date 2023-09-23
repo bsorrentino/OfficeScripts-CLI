@@ -20,36 +20,40 @@ const askForConfirmUpload = async () => {
     return false
 }
 
-export async function pack( bodyDirPath:string ) {
+export async function pack( bodyDirPath:string, version?:string ) {
 
-    const osts_files = (await fsreaddir( '.' ))
-        .filter( n => path.extname(n)==='.osts')
+    return within(async () => {
+
+        const dir = await fsreaddir( path.dirname(bodyDirPath) )
+        const osts_files = dir.filter( n => path.extname(n)==='.osts')
+    
+        const selectedFile = await chooseFile(osts_files, (file) => file )
+        if( !selectedFile ) {
+            return -1
+        }
+        const osts = await loadOSTS( selectedFile, bodyDirPath )
+
+        const body_source = await fsreadFile( osts.bodyFilePath )
+    
+        osts.body = body_source.toString()
+    
+        await fswriteFile( selectedFile, JSON.stringify(osts) )
+    
+        const upload = await askForConfirmUpload()
+    
+        if( !upload ) return 1
+    
+        const prefs = await askForPreferences()   
+        if( !prefs ) return 1
+    
+        await $`m365 spo file add  --webUrl ${prefs.weburl} --folder ${prefs.folder} --path ${selectedFile}`
+    
+        savePreferences( prefs )
+
+        return 0
+            
+    })
         
-    const selectedFile = await chooseFile(osts_files, (file) => file )
-    if( !selectedFile ) {
-        return -1
-    }
-
-    const osts = await loadOSTS( selectedFile, bodyDirPath )
-
-    const body_source = await fsreadFile( osts.bodyFilePath )
-
-    osts.body = body_source.toString()
-
-    await fswriteFile( selectedFile, JSON.stringify(osts) )
-
-    const upload = await askForConfirmUpload()
-
-    if( !upload ) return 1
-
-    const prefs = await askForPreferences()   
-    if( !prefs ) return 1
-
-    await $`m365 spo file add  --webUrl ${prefs.weburl} --folder ${prefs.folder} --path ${selectedFile}`
-
-    savePreferences( prefs )
-
-    return 0
 
 }
 
