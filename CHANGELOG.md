@@ -6,6 +6,8 @@
 
 ### Features
 
+ -  enable copy of excel.d.ts ([bf286d9fa6e9acd](https://github.com/bsorrentino/OfficeScripts-CLI/commit/bf286d9fa6e9acdcf47bb2deb762848bdb2a2c6d))
+ -  add excel ts declarations ([822e062ded334c0](https://github.com/bsorrentino/OfficeScripts-CLI/commit/822e062ded334c0046be473a74a2ce41933041a9))
  -  allow pack to be folder agnostic ([e369f4cdace383d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e369f4cdace383d1072020f4afbd41c18c5bc4ea))
  -  show version on help ([f6e167f14dd0ca3](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f6e167f14dd0ca322396c6af235c139e51968e19))
  -  update office-js declaration ([12eb343786b404e](https://github.com/bsorrentino/OfficeScripts-CLI/commit/12eb343786b404e22fa5ab44c9700672aad2cc95))
@@ -17,6 +19,7 @@
 
 ### Documentation
 
+ -  update changelog ([d0b8b296be3d2e1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d0b8b296be3d2e18c1e61eed767f4aee69eafeb4))
  -  update changelog ([7a977b426d03fe4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/7a977b426d03fe403b8809f88a9e3870d0fd8784))
  -  update readme ([837a82c9e39af80](https://github.com/bsorrentino/OfficeScripts-CLI/commit/837a82c9e39af804994ee66015bb423770a44651))
  -  update chanelog ([deea61f717093de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/deea61f717093deb0c7c3560ccc190f4d39bcb0d))
