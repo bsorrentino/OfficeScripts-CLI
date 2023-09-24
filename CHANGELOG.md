@@ -1,8 +1,9 @@
 # Changelog
 
 
+"name: v1.3.0" is a release tag
 
-## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+## [v1.3.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.3.0) (2023-09-24)
 
 ### Features
 
@@ -19,6 +20,7 @@
 
 ### Documentation
 
+ -  update changelog ([f3b4fcc18d019de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f3b4fcc18d019deb0b8642433bd4be15b3593f04))
  -  update changelog ([d0b8b296be3d2e1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d0b8b296be3d2e18c1e61eed767f4aee69eafeb4))
  -  update changelog ([7a977b426d03fe4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/7a977b426d03fe403b8809f88a9e3870d0fd8784))
  -  update readme ([837a82c9e39af80](https://github.com/bsorrentino/OfficeScripts-CLI/commit/837a82c9e39af804994ee66015bb423770a44651))
@@ -27,6 +29,7 @@
 
 ### ALM 
 
+ -  update bin ([b1c8e38b2b5b428](https://github.com/bsorrentino/OfficeScripts-CLI/commit/b1c8e38b2b5b428946c736a934a7be06913c65db))
  -  upgrade minimist, zx deps ([8c33b21ff1ce17e](https://github.com/bsorrentino/OfficeScripts-CLI/commit/8c33b21ff1ce17e5d039685fc860e494537b7fc9))
  -  update dist files ([12aa470bceb3ffa](https://github.com/bsorrentino/OfficeScripts-CLI/commit/12aa470bceb3ffacbdffdd7434386d9f86bc27a6))
 
