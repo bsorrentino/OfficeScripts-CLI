@@ -17,22 +17,26 @@ const askForConfirmUpload = async () => {
 export async function pack(bodyDirPath, version) {
     return within(async () => {
         const dir = await fsreaddir(path.dirname(bodyDirPath));
+        // console.debug( 'dir', dir)
         const osts_files = dir.filter(n => path.extname(n) === '.osts');
         const selectedFile = await chooseFile(osts_files, (file) => file);
+        // console.debug( 'selectedFile', selectedFile)
         if (!selectedFile) {
             return -1;
         }
-        const osts = await loadOSTS(selectedFile, bodyDirPath);
+        const selectedFilePath = path.join(path.dirname(bodyDirPath), selectedFile);
+        // console.debug( 'selectFilePath', selectedFilePath)
+        const osts = await loadOSTS(selectedFilePath, bodyDirPath);
         const body_source = await fsreadFile(osts.bodyFilePath);
         osts.body = body_source.toString();
-        await fswriteFile(selectedFile, JSON.stringify(osts));
+        await fswriteFile(selectedFilePath, JSON.stringify(osts));
         const upload = await askForConfirmUpload();
         if (!upload)
             return 1;
         const prefs = await askForPreferences();
         if (!prefs)
             return 1;
-        await $ `m365 spo file add  --webUrl ${prefs.weburl} --folder ${prefs.folder} --path ${selectedFile}`;
+        await $ `m365 spo file add  --webUrl ${prefs.weburl} --folder ${prefs.folder} --path ${selectedFilePath}`;
         savePreferences(prefs);
         return 0;
     });
