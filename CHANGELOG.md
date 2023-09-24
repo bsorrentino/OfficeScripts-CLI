@@ -1,8 +1,9 @@
 # Changelog
 
 
+"name: v1.3.2" is a release tag
 
-## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+## [v1.3.2](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.3.2) (2023-09-24)
 
 ### Features
 
@@ -14,6 +15,7 @@
 
 ### Documentation
 
+ -  update changelog ([05f5c2ab286f9cf](https://github.com/bsorrentino/OfficeScripts-CLI/commit/05f5c2ab286f9cfe4e41192aea0c11f6c578d82f))
  -  update changelog ([c698044ecbd1ae2](https://github.com/bsorrentino/OfficeScripts-CLI/commit/c698044ecbd1ae25b2259d3fea78d7f71c0781e3))
 
 
