@@ -84,7 +84,7 @@ export async function loadOSTS(filePath, bodyDirPath) {
     // console.log( 'loadOSTS.bodyFilePath',  bodyFilePath, osts  )
     return { ...osts, bodyFilePath: bodyFilePath };
 }
-const DECLARATION_FILES = ['excel.d.ts', 'office-js-simplified.d.ts'];
+const DECLARATION_FILES = ['excel.d.ts', 'global.d.ts'];
 const fsCopyFile = promisify(fs.copyFile);
 export async function copyOfficeScriptSimplifiedDeclaration(bodyDirPath) {
     try {
