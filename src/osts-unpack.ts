@@ -20,18 +20,6 @@ export interface Options {
 const fsWriteFile = promisify(fs.writeFile)
 const fsMkdir = promisify(fs.mkdir)
 
-async function extractBody(file:SPOFile, bodyDirPath:string) {
-
-    const osts = await loadOSTS( file.Name, bodyDirPath )
-    //console.log( 'bodyDirPath', bodyDirPath, 'bodyFilePath', osts.bodyFilePath )
-    
-    const dir = path.dirname(osts.bodyFilePath)
-    if( !fs.existsSync(dir) ) {
-        await fsMkdir( dir )
-    } 
-    await fsWriteFile( osts.bodyFilePath, osts.body )
-}
-
 export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDeclaration?:boolean ) {
 
     const prefs = await askForPreferences()   
@@ -53,12 +41,24 @@ export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDecl
             return -1
         }
 
+        const outputFilePath = path.join( path.dirname(bodyDirPath), selectedFile.Name)
         // $.verbose = true
 
-        await $`m365 spo file get --webUrl ${prefs.weburl} --id ${selectedFile.UniqueId} --asFile --path ${selectedFile.Name}`
+        // console.debug( selectedFile.Name, 'outputPath', outputPath)
 
-        await extractBody( selectedFile, bodyDirPath )
+        await $`m365 spo file get --webUrl ${prefs.weburl} --id ${selectedFile.UniqueId} --asFile --path ${outputFilePath}`
 
+        // Extract body
+        const osts = await loadOSTS( outputFilePath, bodyDirPath )
+        //console.debug( 'bodyDirPath', bodyDirPath, 'bodyFilePath', osts.bodyFilePath )
+        
+        const dir = path.dirname(osts.bodyFilePath)
+        if( !fs.existsSync(dir) ) {
+            await fsMkdir( dir )
+        } 
+        await fsWriteFile( outputFilePath, osts.body )
+    
+        // Copy declaration files if needed
         if( copyOfficeScriptSimplifiedDeclaration ) {
 
             await CP_D_TS( bodyDirPath )

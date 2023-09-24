@@ -1,6 +1,28 @@
 # Changelog
 
 
+
+## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+
+### Features
+
+ -  rename declaration file to global.d.ts ([3ff215446660e96](https://github.com/bsorrentino/OfficeScripts-CLI/commit/3ff215446660e968a7de342ad90f23f2dd5da1a3))
+
+### Bug Fixes
+
+ -  use same folder convention used in pack command ([c1ca9d0d1b9d05e](https://github.com/bsorrentino/OfficeScripts-CLI/commit/c1ca9d0d1b9d05e5ab20dbcd8a7fd7569d2819f3))
+
+### Documentation
+
+ -  update changelog ([c698044ecbd1ae2](https://github.com/bsorrentino/OfficeScripts-CLI/commit/c698044ecbd1ae25b2259d3fea78d7f71c0781e3))
+
+
+### ALM 
+
+ -  upgrade version ([054dba86e869e06](https://github.com/bsorrentino/OfficeScripts-CLI/commit/054dba86e869e06776ea980e5f4ce76b1161842c))
+ -  update osts-utils dist ([10fbd2476e26be3](https://github.com/bsorrentino/OfficeScripts-CLI/commit/10fbd2476e26be384d03c6cd23e115f6312433e1))
+
+
 "name: v1.3.1" is a release tag
 
 ## [v1.3.1](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.3.1) (2023-09-24)
