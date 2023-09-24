@@ -155,7 +155,7 @@ export async function loadOSTS( filePath:string, bodyDirPath:string ):Promise<Lo
 
 }
     
-const DECLARATION_FILE = 'office-js-simplified.d.ts'
+const DECLARATION_FILES = [ 'excel.d.ts', 'office-js-simplified.d.ts' ] 
 
 const fsCopyFile = promisify(fs.copyFile)
 
@@ -163,13 +163,14 @@ export async function copyOfficeScriptSimplifiedDeclaration( bodyDirPath:string 
 
     try {
          //console.debug( '__dirname', __dirname )
-         await fsCopyFile( path.join(__dirname, '..', DECLARATION_FILE), path.join(bodyDirPath,DECLARATION_FILE) )
-         console.info( `declaration file needs installation of '${chalk.yellow('@types/Office.js')}' running ${chalk.inverse('npm install -D @types/office-js')}`)
+         await fsCopyFile( path.join(__dirname, '..', DECLARATION_FILES[0]), path.join(bodyDirPath,DECLARATION_FILES[0]) )
+         await fsCopyFile( path.join(__dirname, '..', DECLARATION_FILES[1]), path.join(bodyDirPath,DECLARATION_FILES[1]) )
+        //  console.info( `declaration file needs installation of '${chalk.yellow('@types/Office.js')}' running ${chalk.inverse('npm install -D @types/office-js')}`)
 
          return 0
      }
      catch( e ) {
-         console.error( 'failed to copy declaration file', e )
+         console.error( 'failed to copy declaration files', e )
          return -1
      }
  }

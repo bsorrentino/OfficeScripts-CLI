@@ -2,25 +2,46 @@
 
 
 
+## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+
+### Features
+
+ -  enable copy of excel.d.ts ([bf286d9fa6e9acd](https://github.com/bsorrentino/OfficeScripts-CLI/commit/bf286d9fa6e9acdcf47bb2deb762848bdb2a2c6d))
+ -  add excel ts declarations ([822e062ded334c0](https://github.com/bsorrentino/OfficeScripts-CLI/commit/822e062ded334c0046be473a74a2ce41933041a9))
+ -  allow pack to be folder agnostic ([e369f4cdace383d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e369f4cdace383d1072020f4afbd41c18c5bc4ea))
+ -  show version on help ([f6e167f14dd0ca3](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f6e167f14dd0ca322396c6af235c139e51968e19))
+ -  update office-js declaration ([12eb343786b404e](https://github.com/bsorrentino/OfficeScripts-CLI/commit/12eb343786b404e22fa5ab44c9700672aad2cc95))
+
+### Bug Fixes
+
+ -  replace __filename and __dirname implementation ([4caaacfbdb33eb7](https://github.com/bsorrentino/OfficeScripts-CLI/commit/4caaacfbdb33eb7a922192553ef7a8a3fe65f2f7))
+ -  update link in changelog ([e86c960af32f685](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e86c960af32f68554fff0781409c99dab2fb9127))
+
+### Documentation
+
+ -  update changelog ([d0b8b296be3d2e1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d0b8b296be3d2e18c1e61eed767f4aee69eafeb4))
+ -  update changelog ([7a977b426d03fe4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/7a977b426d03fe403b8809f88a9e3870d0fd8784))
+ -  update readme ([837a82c9e39af80](https://github.com/bsorrentino/OfficeScripts-CLI/commit/837a82c9e39af804994ee66015bb423770a44651))
+ -  update chanelog ([deea61f717093de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/deea61f717093deb0c7c3560ccc190f4d39bcb0d))
+
+
+### ALM 
+
+ -  upgrade minimist, zx deps ([8c33b21ff1ce17e](https://github.com/bsorrentino/OfficeScripts-CLI/commit/8c33b21ff1ce17e5d039685fc860e494537b7fc9))
+ -  update dist files ([12aa470bceb3ffa](https://github.com/bsorrentino/OfficeScripts-CLI/commit/12aa470bceb3ffacbdffdd7434386d9f86bc27a6))
+
+
+
 ## [v1.2](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.2) (2023-01-23)
 
 ### Features
 
  -  auto detect logged user OSTS url. issue #1 ([addd07537bb3155](https://github.com/bsorrentino/OfficeScripts-CLI/commit/addd07537bb3155b157b18bb7c935f896c6bf2bd))
- -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
 
-### Bug Fixes
-
- -  update link in changelog ([e86c960af32f685](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e86c960af32f68554fff0781409c99dab2fb9127))
 
 ### Documentation
 
  -  update changelog ([ef7a5c6420cff1a](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ef7a5c6420cff1a41b6d92b223a876999e4ffe23))
- -  update readme ([837a82c9e39af80](https://github.com/bsorrentino/OfficeScripts-CLI/commit/837a82c9e39af804994ee66015bb423770a44651))
- -  update chanelog ([deea61f717093de](https://github.com/bsorrentino/OfficeScripts-CLI/commit/deea61f717093deb0c7c3560ccc190f4d39bcb0d))
- -  **changelog**  update changelog ([d1c15a2cad8218b](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
- -  update changelog ([f469f5815d991f1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
- -  update changelog ([ad0066b60a934c4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 
 ### ALM 
@@ -42,6 +63,7 @@
  -  changelog.md ([ccde96023104a96](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ccde96023104a96f474c75f3dc5fe08efad7c43b))
  -  update cli help ([895fd05c0f884c5](https://github.com/bsorrentino/OfficeScripts-CLI/commit/895fd05c0f884c57137de96cda8374958cfeb912))
  -  **changelog.md**  update changelog ([e1a603bacd6859d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/e1a603bacd6859dadeaa6b07dde7d965f6f1da13))
+ -  **changelog**  update changelog ([d1c15a2cad8218b](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d1c15a2cad8218b5f874a3d9d89dcaf2250b7734))
 
 
 
@@ -50,8 +72,14 @@
 
 ## [v1.0.3](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.0.3) (2022-11-03)
 
+### Features
+
+ -  **office-js-simplified.d.ts**  add cell formatting methods/types ([f1fdca4c54af29f](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f1fdca4c54af29fb03a82996c45a3fc67ee7a859))
 
 
+### Documentation
+
+ -  update changelog ([f469f5815d991f1](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f469f5815d991f1d38bfefa00ed7898a14859009))
 
 ### Refactor
 
@@ -84,6 +112,7 @@
 ### Documentation
 
  -  update changelog ([f77d5616feb59a5](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f77d5616feb59a5596b83946ddf1dd1dad87592a))
+ -  update changelog ([ad0066b60a934c4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/ad0066b60a934c4f7c2a58ef47b6dc8f55f8fa39))
 
 
 ### ALM 
