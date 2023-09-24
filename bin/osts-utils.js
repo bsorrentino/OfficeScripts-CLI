@@ -3,6 +3,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
 import Preferences from "preferences";
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const askForWebUrl = async (prefs) => {
     const ask = async () => (prefs.weburl) ?
         await question(`Web Url, default '${prefs.weburl}' type url or <enter> to confirm: `) :
@@ -81,17 +84,18 @@ export async function loadOSTS(filePath, bodyDirPath) {
     // console.log( 'loadOSTS.bodyFilePath',  bodyFilePath, osts  )
     return { ...osts, bodyFilePath: bodyFilePath };
 }
-const DECLARATION_FILE = 'office-js-simplified.d.ts';
+const DECLARATION_FILES = ['excel.d.ts', 'office-js-simplified.d.ts'];
 const fsCopyFile = promisify(fs.copyFile);
 export async function copyOfficeScriptSimplifiedDeclaration(bodyDirPath) {
     try {
-        //console.log( '__dirname', __dirname )
-        await fsCopyFile(path.join(__dirname, '..', DECLARATION_FILE), path.join(bodyDirPath, DECLARATION_FILE));
-        console.info(`declaration file needs installation of '${chalk.yellow('@types/Office.js')}' running ${chalk.inverse('npm install -D @types/office-js')}`);
+        //console.debug( '__dirname', __dirname )
+        await fsCopyFile(path.join(__dirname, '..', DECLARATION_FILES[0]), path.join(bodyDirPath, DECLARATION_FILES[0]));
+        await fsCopyFile(path.join(__dirname, '..', DECLARATION_FILES[1]), path.join(bodyDirPath, DECLARATION_FILES[1]));
+        //  console.info( `declaration file needs installation of '${chalk.yellow('@types/Office.js')}' running ${chalk.inverse('npm install -D @types/office-js')}`)
         return 0;
     }
     catch (e) {
-        console.error('failed to copy declaration file', e);
+        console.error('failed to copy declaration files', e);
         return -1;
     }
 }
