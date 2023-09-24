@@ -155,7 +155,7 @@ export async function loadOSTS( filePath:string, bodyDirPath:string ):Promise<Lo
 
 }
     
-const DECLARATION_FILES = [ 'excel.d.ts', 'office-js-simplified.d.ts' ] 
+const DECLARATION_FILES = [ 'excel.d.ts', 'global.d.ts' ] 
 
 const fsCopyFile = promisify(fs.copyFile)
 
