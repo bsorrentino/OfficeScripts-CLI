@@ -3,6 +3,10 @@ import * as fs from 'fs'
 import * as path from 'path'
 import {promisify } from 'util'
 import Preferences from "preferences"
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export interface OSTS {
     "version": string
@@ -158,7 +162,7 @@ const fsCopyFile = promisify(fs.copyFile)
 export async function copyOfficeScriptSimplifiedDeclaration( bodyDirPath:string ) {
 
     try {
-         //console.log( '__dirname', __dirname )
+         //console.debug( '__dirname', __dirname )
          await fsCopyFile( path.join(__dirname, '..', DECLARATION_FILE), path.join(bodyDirPath,DECLARATION_FILE) )
          console.info( `declaration file needs installation of '${chalk.yellow('@types/Office.js')}' running ${chalk.inverse('npm install -D @types/office-js')}`)
 
