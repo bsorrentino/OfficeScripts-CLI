@@ -1,6 +1,24 @@
 # Changelog
 
 
+
+## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+
+
+### Bug Fixes
+
+ -  **pack**  normalise saving path ([6ef2acb92d80025](https://github.com/bsorrentino/OfficeScripts-CLI/commit/6ef2acb92d80025428eef6e5cf0be50e0988106e))
+
+### Documentation
+
+ -  update changelog ([7fb10d576903784](https://github.com/bsorrentino/OfficeScripts-CLI/commit/7fb10d576903784f607085840eaf896f6d803d40))
+
+
+### ALM 
+
+ -  **pack**  update bin ([f9c9663c6a528ed](https://github.com/bsorrentino/OfficeScripts-CLI/commit/f9c9663c6a528ed1ef27e3ac5e1653b39a6d4d74))
+
+
 "name: v1.3.0" is a release tag
 
 ## [v1.3.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.3.0) (2023-09-24)
