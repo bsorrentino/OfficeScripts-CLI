@@ -17,15 +17,15 @@ const askForConfirmUpload = async () => {
 export async function pack(bodyDirPath, version) {
     return within(async () => {
         const dir = await fsreaddir(path.dirname(bodyDirPath));
-        console.debug('dir', dir);
+        // console.debug( 'dir', dir)
         const osts_files = dir.filter(n => path.extname(n) === '.osts');
         const selectedFile = await chooseFile(osts_files, (file) => file);
-        console.debug('selectedFile', selectedFile);
+        // console.debug( 'selectedFile', selectedFile)
         if (!selectedFile) {
             return -1;
         }
         const selectedFilePath = path.join(path.dirname(bodyDirPath), selectedFile);
-        console.debug('selectFilePath', selectedFilePath);
+        // console.debug( 'selectFilePath', selectedFilePath)
         const osts = await loadOSTS(selectedFilePath, bodyDirPath);
         const body_source = await fsreadFile(osts.bodyFilePath);
         osts.body = body_source.toString();
