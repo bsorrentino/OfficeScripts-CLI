@@ -56,7 +56,7 @@ export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDecl
         if( !fs.existsSync(dir) ) {
             await fsMkdir( dir )
         } 
-        await fsWriteFile( outputFilePath, osts.body )
+        await fsWriteFile( osts.bodyFilePath, osts.body )
     
         // Copy declaration files if needed
         if( copyOfficeScriptSimplifiedDeclaration ) {
