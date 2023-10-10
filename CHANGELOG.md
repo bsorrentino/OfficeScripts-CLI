@@ -1,6 +1,29 @@
 # Changelog
 
 
+
+## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+
+### Features
+
+ -  pass file name to upload ([11f5de0fb2e2053](https://github.com/bsorrentino/OfficeScripts-CLI/commit/11f5de0fb2e2053311a7a8b68ca44030dfd6e665))
+ -  pass ParsedArgs to commands ([5f41bb48a4f4886](https://github.com/bsorrentino/OfficeScripts-CLI/commit/5f41bb48a4f4886b7cf7a3bf2c83967db99561ee))
+
+
+### Documentation
+
+ -  update changelog ([2888880e039d56d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/2888880e039d56d7f5d0d6feaaae5f87f42ea51d))
+
+### Refactor
+
+ -  use fs-extra ([6ab503f84301804](https://github.com/bsorrentino/OfficeScripts-CLI/commit/6ab503f843018041cfed688b3e94b80b7df5a4c5))
+
+### ALM 
+
+ -  update dist ([bc6fe604e4d478d](https://github.com/bsorrentino/OfficeScripts-CLI/commit/bc6fe604e4d478d25c5ffbb3f9fff75daf94dfad))
+ -  move to next version ([6ca4157fcbcd840](https://github.com/bsorrentino/OfficeScripts-CLI/commit/6ca4157fcbcd8404a6bd3d1e857751935b57f655))
+
+
 "name: v1.3.3" is a release tag
 
 ## [v1.3.3](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.3.3) (2023-09-25)

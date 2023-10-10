@@ -7,8 +7,6 @@ import { readFile } from 'fs/promises';
 
 const DEFAULT_PATH = 'osts'
 
-type OSTSCLI = ParsedArgs
-
 async function help() {
 
     const packageJsonContent = await readFile(new URL('../package.json', import.meta.url))
@@ -25,7 +23,7 @@ osts list[--path]  // list OSTS packages in SPO path.
 osts unpack [--path, -p <dest dir> [--dts] ] // download OSTS package and extract body (.ts) to dest dir (default '${DEFAULT_PATH}'). 
                                              // If --dts is specified an Office Script Simplified TS Declaration  file will be copied in dest dir
 
-osts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default '${DEFAULT_PATH}') to OSTS package and upload it
+osts pack [--path, -p <src dir>] [--file, -f <osts file name>] // bundle source (.ts) in src dir (default '${DEFAULT_PATH}') to OSTS package and upload it
 
 osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration file is copied in dest dir
 `)
@@ -33,16 +31,16 @@ osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration f
 
 async function main() {
 
-    const cli: OSTSCLI = minimist(process.argv.slice(2), {
+    const cli: ParsedArgs = minimist(process.argv.slice(2), {
         '--': false,
-        string: ['path', 'version'],
+        string: ['path', 'version', 'file'],
         boolean: 'dts',
-        alias: { 'p': 'path' },
+        alias: { 'p': 'path',  'f': 'file'},
         'default': { 'path': DEFAULT_PATH },
         unknown: (args: string) => /pack|unpack|list|dts/i.test(args)
     })
 
-    // console.log( cli );
+    // console.debug( cli );
 
     // Check Arguments
     const _cmd = () =>
@@ -72,11 +70,11 @@ async function main() {
         exit(0)
     }
     else if (command === 'pack') {
-        const code = await pack(_path(), cli['version'])
+        const code = await pack(_path(), cli )
         exit(code)
     }
     else if (command === 'unpack') {
-        const code = await unpack(_path(), cli['dts'])
+        const code = await unpack(_path(), cli )
         exit(code)
     }
     else if (command === 'dts') {
