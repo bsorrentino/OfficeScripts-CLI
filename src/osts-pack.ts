@@ -1,17 +1,16 @@
 import 'zx/globals'
-import * as fs from 'fs'
-import * as path from 'path'
-import {promisify } from 'util'
-
 
 import { askForPreferences, chooseFile, loadOSTS, savePreferences } from './osts-utils.js'
+import { ParsedArgs } from 'minimist'
 
-const fsreadFile = promisify(fs.readFile)
-const fswriteFile = promisify(fs.writeFile)
-const fsreaddir = promisify(fs.readdir)
-
-const askForConfirmUpload = async () => {
-    const answer = (await question( 'do you want upload file? (Y/n): '))
+/**
+ * Asks the user to confirm if they want to upload the given file.
+ * 
+ * @param {string} file - The file path to upload 
+ * @returns {Promise<boolean>} - Promise resolving to true if user confirms upload, false otherwise
+ */
+const askForConfirmUpload = async ( file:string ) => {
+    const answer = (await question( `do you want upload file '${file}' ? (Y/n):`))
                         .trim()
                         .toLowerCase()
 
@@ -20,47 +19,58 @@ const askForConfirmUpload = async () => {
     return false
 }
 
-export async function pack( bodyDirPath:string, version?:string ) {
+/**
+ * Packs an Office Script into a .osts file for uploading.
+ * 
+ * @param {string} bodyDirPath - The directory containing Office Script .ts files
+ * @param {ParsedArgs} cli - The CLI args object 
+ */  
+export async function pack( bodyDirPath:string, cli:ParsedArgs ) {
 
-    return within(async () => {
+    const { file } = cli
 
-        const dir = await fsreaddir( path.dirname(bodyDirPath) )
-        // console.debug( 'dir', dir)
+    const dir = await fs.readdir( path.dirname(bodyDirPath) )
+    // console.debug( 'dir', dir)
 
-        const osts_files = dir.filter( n => path.extname(n)==='.osts')
+    const osts_files = dir.filter( n => path.extname(n)==='.osts')
+
+    let selectedFile:string|undefined
+
+    if( file ) {
+        selectedFile = osts_files.find(f => f === file || path.basename(f, '.osts')=== file) 
+    }
     
-        const selectedFile = await chooseFile(osts_files, (file) => file )
-        // console.debug( 'selectedFile', selectedFile)
+    if( !selectedFile) {
+        selectedFile = await chooseFile(osts_files, (file) => file )
+        // console.debug( 'selectedFile', selectedFile)    
         if( !selectedFile ) {
             return -1
-        }
-        
-        const selectedFilePath = path.join( path.dirname(bodyDirPath), selectedFile )
-        // console.debug( 'selectFilePath', selectedFilePath)
+        }            
+    }
 
-        const osts = await loadOSTS( selectedFilePath, bodyDirPath )
+    const selectedFilePath = path.join( path.dirname(bodyDirPath), selectedFile )
+    // console.debug( 'selectFilePath', selectedFilePath)
 
-        const body_source = await fsreadFile( osts.bodyFilePath )
-    
-        osts.body = body_source.toString()
-    
-        await fswriteFile( selectedFilePath, JSON.stringify(osts) )
-    
-        const upload = await askForConfirmUpload()
-    
-        if( !upload ) return 1
-    
-        const prefs = await askForPreferences()   
-        if( !prefs ) return 1
-    
-        await $`m365 spo file add  --webUrl ${prefs.weburl} --folder ${prefs.folder} --path ${selectedFilePath}`
-    
-        savePreferences( prefs )
+    const osts = await loadOSTS( selectedFilePath, bodyDirPath )
 
-        return 0
-            
-    })
-        
+    const body_source = await fs.readFile( osts. bodyFilePath )
+
+    osts.body = body_source.toString()
+
+    await fs.writeFile( selectedFilePath, JSON.stringify(osts) )
+
+    const upload = await askForConfirmUpload( selectedFile )
+
+    if( !upload ) return 1
+
+    const prefs = await askForPreferences()   
+    if( !prefs ) return 1
+
+    await $`m365 spo file add  --webUrl ${prefs.weburl} --folder ${prefs.folder} --path ${selectedFilePath}`
+
+    savePreferences( prefs )
+
+    return 0
 
 }
 
