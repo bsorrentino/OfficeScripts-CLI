@@ -40,12 +40,12 @@ npm install -g @bsorrentino/osts-cli
 ```
 Usage:
 ========
-osts list  // list OSTS packages in SPO path. 
+osts list[--path]  // list OSTS packages in SPO path. 
 
 osts unpack [--path, -p <dest dir> [--dts] ] // download OSTS package and extract body (.ts) to dest dir (default 'osts'). 
                                              // If --dts is specified an Office Script Simplified TS Declaration  file will be copied in dest dir
 
-osts pack [--path, -p <src dir>] // bundle source (.ts) in src dir (default 'osts') to OSTS package and upload it
+osts pack [--path, -p <src dir>] [--file, -f <osts file name>] // bundle source (.ts) in src dir (default 'osts') to OSTS package and upload it
 
 osts dts [--path, -p <dest dir>] // an Office Script Simplified TS Declaration file is copied in dest dir
 
