@@ -1,27 +1,25 @@
 import 'zx/globals'
-import * as fs from 'fs'
-import * as path from 'path'
-import {promisify } from 'util'
 
 import { 
     chooseFile, 
     loadOSTS, 
     askForPreferences, 
     savePreferences, 
-    SPOFile, 
     copyOfficeScriptSimplifiedDeclaration as CP_D_TS, 
     listOfficeScript} from './osts-utils.js'
+import { ParsedArgs } from 'minimist'
+  
+/**
+ * Unpacks an Office Script (.osts) file into its source code.
+ * 
+ * @param {string} bodyDirPath - The directory to extract the script source code
+ * @param {ParsedArgs} cli - The command line arguments 
+ * @returns {Promise<number>} - 0 if successful, error code otherwise
+ */
+export async function unpack( bodyDirPath:string, cli: ParsedArgs ) {
 
-export interface Options {
-    copyOfficeScriptSimplifiedDeclaration?:boolean
+    const { dts: copyOfficeScriptSimplifiedDeclaration } = cli
     
-} 
-
-const fsWriteFile = promisify(fs.writeFile)
-const fsMkdir = promisify(fs.mkdir)
-
-export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDeclaration?:boolean ) {
-
     const prefs = await askForPreferences()   
     if( !prefs ) return 0
 
@@ -53,10 +51,10 @@ export async function unpack( bodyDirPath:string, copyOfficeScriptSimplifiedDecl
         //console.debug( 'bodyDirPath', bodyDirPath, 'bodyFilePath', osts.bodyFilePath )
         
         const dir = path.dirname(osts.bodyFilePath)
-        if( !fs.existsSync(dir) ) {
-            await fsMkdir( dir )
-        } 
-        await fsWriteFile( osts.bodyFilePath, osts.body )
+
+        await fs.ensureDir(dir)
+
+        await fs.writeFile( osts.bodyFilePath, osts.body )
     
         // Copy declaration files if needed
         if( copyOfficeScriptSimplifiedDeclaration ) {
