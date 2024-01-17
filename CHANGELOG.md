@@ -1,6 +1,35 @@
 # Changelog
 
 
+
+## [Unreleased](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/Unreleased) ()
+
+
+
+
+
+
+
+"name: v1.4.0" is a release tag
+
+## [v1.4.0](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.4.0) (2024-01-17)
+
+
+### Bug Fixes
+
+ -  haven't admin permission ([d0dba940ae76a51](https://github.com/bsorrentino/OfficeScripts-CLI/commit/d0dba940ae76a5143a13592d5969111d9f55ae6b))
+
+### Documentation
+
+ -  update readme ([8ec948844840fd4](https://github.com/bsorrentino/OfficeScripts-CLI/commit/8ec948844840fd493a3fa68017d91879c1999f35))
+ -  update changelog ([9fa27166507d398](https://github.com/bsorrentino/OfficeScripts-CLI/commit/9fa27166507d398608c8f55184c3feae256b534f))
+
+
+### ALM 
+
+ -  new release ([99782e9d37ab184](https://github.com/bsorrentino/OfficeScripts-CLI/commit/99782e9d37ab184b8519d0123c45e9c5a5d4ee9c))
+
+
 "name: v1.3.4" is a release tag
 
 ## [v1.3.4](https://github.com/bsorrentino/OfficeScripts-CLI/releases/tag/v1.3.4) (2023-10-10)
