@@ -180,10 +180,11 @@ export async function copyOfficeScriptSimplifiedDeclaration( bodyDirPath:string 
 
     const list_parameters = [
         '--webUrl', prefs.weburl,
-        '--folder', prefs.folder,
+        '--folderUrl', prefs.folder,
         '--query', "[?ends_with(Name, '.osts')]",
         '--recursive'
     ]
+    
     const result =  await $`m365 spo file list ${list_parameters}`.quiet()
     
     const spoFileListResult = JSON.parse( result.stdout ) as Array<SPOFile>
@@ -211,13 +212,25 @@ export const getWebUrl = async () => {
         '--query', `[?Owner=='${status.connectedAs}'].Url | [0]`
     ]
     
-    const cmd_list = await $`m365 onedrive list ${args}`.quiet()
+    try {
+        const cmd_list = await $`m365 onedrive list ${args}`.quiet()
 
-    const url = JSON.parse(cmd_list.stdout) 
-
-    if( url === null ) {
-        throw  `Owner '${status.connectedAs}' not found!`
+        const url = JSON.parse(cmd_list.stdout) 
+    
+        if( url === null ) {
+            throw  `Owner '${status.connectedAs}' not found!`
+        }
+    
+        return url
+    
     }
+    catch( e ) {
+        
+        const tenant = await question( `give me tenant name: `) 
 
-    return url
+        const url = `https://${tenant}-my.sharepoint.com/personal/${status.connectedAs.replace(/[.@]/g, '_')}`
+
+        // console.debug( 'url', url)
+        return url
+    }
 }
