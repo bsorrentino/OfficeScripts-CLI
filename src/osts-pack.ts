@@ -32,16 +32,16 @@ export async function pack( bodyDirPath:string, cli:ParsedArgs ) {
     const dir = await fs.readdir( path.dirname(bodyDirPath) )
     // console.debug( 'dir', dir)
 
-    const osts_files = dir.filter( n => path.extname(n)==='.osts')
+    const osts_files = dir.filter( (n: string) => path.extname(n)==='.osts')
 
     let selectedFile:string|undefined
 
     if( file ) {
-        selectedFile = osts_files.find(f => f === file || path.basename(f, '.osts')=== file) 
+        selectedFile = osts_files.find((f: string) => f === file || path.basename(f, '.osts')=== file) 
     }
     
     if( !selectedFile) {
-        selectedFile = await chooseFile(osts_files, (file) => file )
+        selectedFile = await chooseFile(osts_files, (file: string) => file )
         // console.debug( 'selectedFile', selectedFile)    
         if( !selectedFile ) {
             return -1

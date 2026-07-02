@@ -24,10 +24,10 @@ export async function pack(bodyDirPath, cli) {
     const { file } = cli;
     const dir = await fs.readdir(path.dirname(bodyDirPath));
     // console.debug( 'dir', dir)
-    const osts_files = dir.filter(n => path.extname(n) === '.osts');
+    const osts_files = dir.filter((n) => path.extname(n) === '.osts');
     let selectedFile;
     if (file) {
-        selectedFile = osts_files.find(f => f === file || path.basename(f, '.osts') === file);
+        selectedFile = osts_files.find((f) => f === file || path.basename(f, '.osts') === file);
     }
     if (!selectedFile) {
         selectedFile = await chooseFile(osts_files, (file) => file);
